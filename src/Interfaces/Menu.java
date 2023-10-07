@@ -48,6 +48,11 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.add(CargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 320, -1));
 
         ModificarGrafo.setText("MODIFICAR GRAFO");
+        ModificarGrafo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarGrafoActionPerformed(evt);
+            }
+        });
         jPanel1.add(ModificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 320, -1));
 
         CompsFuerteConex.setText("COMPONENTES FUERTEMENTE CONECTADOS");
@@ -86,9 +91,13 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_EXITActionPerformed
 
     private void CargarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargarArchivoActionPerformed
-        CargarArchivo ventana = new CargarArchivo(this);
+        CargarArchivo v1 = new CargarArchivo(this);
         
     }//GEN-LAST:event_CargarArchivoActionPerformed
+
+    private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
+        ModificarGrafo v2 = new ModificarGrafo(this);
+    }//GEN-LAST:event_ModificarGrafoActionPerformed
 
     /**
      * @param args the command line arguments
