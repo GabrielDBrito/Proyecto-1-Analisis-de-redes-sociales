@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import Interfaces.Menu;
 /**
  * este codigo importando JFilechooser lee el archio txt y los almacenas de dos ariables ArrayList, una para usuarios y otra para relaciones.Finalmene, imprime el codigo en la consola.
  * @author luis
@@ -23,6 +24,8 @@ public class Main {
     ArrayList <String> usuarios = new ArrayList<>();
     static ArrayList <String> relaciones = new ArrayList<>();
     public static void main(String[] args) throws IOException {
+        Menu ventana = new Menu();
+        ventana.setVisible(true);
 
         // Creamos el JFileChooser
         JFileChooser jfc = new JFileChooser();
