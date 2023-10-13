@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyecto1;
+package Grafo;
 
-import EDD.Lista;
+import EDD.ListaG;
 
 /**
  *
@@ -14,22 +14,24 @@ import EDD.Lista;
  */
 
 public class Usuario {
-    private String nombre;
+    private String id;
     private Integer numero;
-    private Lista relaciones;
+    private ListaG relaciones;
+    private Usuario next;
 
     public Usuario(String nombre, Integer numero) {
-        this.nombre = nombre;
+        this.id = nombre;
         this.numero = numero;
-        this.relaciones = new Lista();
+        this.relaciones = new ListaG();
+        this.next=null;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getId() {
+        return id;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Integer getNumero() {
@@ -40,13 +42,22 @@ public class Usuario {
         this.numero = numero;
     }
 
-    public Lista getRelaciones() {
+    public ListaG getRelaciones() {
         return relaciones;
     }
 
-    public void setRelaciones(Lista relaciones) {
+    public void setRelaciones(ListaG relaciones) {
         this.relaciones = relaciones;
     }
+
+    public Usuario getNext() {
+        return next;
+    }
+
+    public void setNext(Usuario next) {
+        this.next = next;
+    }
+    
     
     
 }
