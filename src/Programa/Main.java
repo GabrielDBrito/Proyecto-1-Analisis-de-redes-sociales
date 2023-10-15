@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package Programa;
-/**
- *
- * @author Gabriel
- */
-public class Main {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-       
-    }
-
-    }
-=======
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
@@ -89,28 +68,18 @@ public class Main {
                 System.out.println("Usuarios:");
                 Nodo pointer=usuarios.getHead();
                 while (pointer!=null) {
-                    //if (pointer != null) {
                     System.out.println(pointer.getElement());
-                    pointer=pointer.getNext();
+                    pointer=pointer.getNext();}
                     
-                }
 
                 // Imprimimos la información de las relaciones
                 System.out.println("Relaciones:");
                 Nodo pointer2=relaciones.getHead();
                 while (pointer2!=null) {
-                    //if (pointer2 != null) {
                     System.out.println(pointer2.getElement());
                     pointer2=pointer2.getNext();
                 }
             }
+            
         }
-    
-    
-
 }
-        
-    
-    
-
->>>>>>> develop

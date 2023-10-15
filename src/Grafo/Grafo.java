@@ -5,7 +5,8 @@
 package Grafo;
 
 import EDD.ListaG;
-
+import EDD.Lista;
+import EDD.Nodo;
 /**
  *
  * @author Gabriel
@@ -35,6 +36,19 @@ public class Grafo {
             pointer=pointer.getNext();
         }
     }
+    
+    public void crearUsuarios(Lista usuarios){
+        int cont=0;
+        Nodo pointer=usuarios.getHead();
+        while (pointer!= null){
+            String id=pointer.getElement().toString();
+            Usuario usuario=new Usuario(id,cont);
+            getUsuarios().insertFinal(usuario);
+            cont++;
+            pointer=pointer.getNext();
+        }
+    }
+    
     
     /*busqueda por id
     *@param id

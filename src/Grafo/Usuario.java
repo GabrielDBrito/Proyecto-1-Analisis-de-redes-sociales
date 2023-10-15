@@ -9,7 +9,7 @@ import EDD.ListaG;
 /**
  *
  * @author Gabriel
- * version 04/10/23
+ * version 15/10/23
  * 
  */
 
@@ -56,6 +56,19 @@ public class Usuario {
 
     public void setNext(Usuario next) {
         this.next = next;
+    }
+    
+    public void print(){
+        System.out.println("--------------");
+        System.out.println("Id: "+getId());
+        System.out.println("Numero: "+getNumero());
+        System.out.println("Relaciones: ");
+        Usuario pointer=relaciones.getHead();
+        while (pointer!=null){
+            System.out.print("["+pointer.getId()+"]");
+            pointer=pointer.getNext(); 
+        }
+        System.out.println("--------------");
     }
     
     
