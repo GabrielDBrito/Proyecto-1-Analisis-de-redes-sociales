@@ -2,12 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package proyecto1;
+package Programa;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JFileChooser;
+import EDD.Lista;
+import EDD.Nodo;
 
 /**este codigo importando JFilechooser lee el archio txt y los almacenas de dos arrayys de String, una para usuarios y otra para relaciones.Finalmene, imprime el codigo en la consola.
  * @author luis
@@ -31,9 +33,9 @@ public class Main {
                 // Creamos un flujo de entrada para leer el archivo
                 FileReader fr = new FileReader(archivo);
 
-                // Declaramos dos arrays para almacenar la información
-                String[] usuarios = new String[100];
-                String[] relaciones = new String[100];
+                // Declaramos dos listas para almacenar la información
+                Lista usuarios=new Lista();
+                Lista relaciones=new Lista();
 
                 int i = 0;
                 int j = 0;
@@ -46,14 +48,15 @@ public class Main {
                     // Si la línea es un usuario
                     if (linea.startsWith("Usuario")) {
 
-                        // Agregamos la línea al array de usuarios
-                        usuarios[i] = linea;
+                        // Agregamos la línea a la lista de usuarios
+                        usuarios.insertFinal(linea); 
                         i++;
 
                     } else {
 
-                        // Agregamos la línea al array de relaciones
-                        relaciones[j] = linea;
+                        // Agregamos la línea a la lista de relaciones
+                        relaciones.insertFinal(linea);
+                        //relaciones[j] = linea;
                         j++;
                     }
                 }
@@ -63,18 +66,21 @@ public class Main {
 
                 // Imprimimos la información de los usuarios
                 System.out.println("Usuarios:");
-                for (String usuario : usuarios) {
-                    if (usuario != null) {
-                        System.out.println(usuario);
-                    }
+                Nodo pointer=usuarios.getHead();
+                while (pointer!=null) {
+                    //if (pointer != null) {
+                    System.out.println(pointer.getElement());
+                    pointer=pointer.getNext();
+                    
                 }
 
                 // Imprimimos la información de las relaciones
                 System.out.println("Relaciones:");
-                for (String relacion : relaciones) {
-                    if (relacion != null) {
-                        System.out.println(relacion);
-                    }
+                Nodo pointer2=relaciones.getHead();
+                while (pointer2!=null) {
+                    //if (pointer2 != null) {
+                    System.out.println(pointer2.getElement());
+                    pointer2=pointer2.getNext();
                 }
             }
         }
