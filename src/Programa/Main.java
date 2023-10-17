@@ -46,7 +46,7 @@ public class Main {
                 while ((linea = br.readLine()) != null) {
 
                     // Si la línea es un usuario
-                    if (linea.startsWith("Usuario")) {
+                    if (linea.startsWith("usuarios")) {
 
                         // Agregamos la línea a la lista de usuarios
                         usuarios.insertFinal(linea); 
