@@ -37,49 +37,42 @@ public class Main {
                 Lista usuarios=new Lista();
                 Lista relaciones=new Lista();
 
-                int i = 0;
-                int j = 0;
-
                 // Leemos los datos del archivo
                 BufferedReader br = new BufferedReader(fr);
                 String linea;
+                int contador =0;
                 while ((linea = br.readLine()) != null) {
 
                     // Si la línea es un usuario
-                    if (linea.startsWith("Usuario")) {
-
-                        // Agregamos la línea a la lista de usuarios
-                        usuarios.insertFinal(linea); 
-                        i++;
-
-                    } else {
-
-                        // Agregamos la línea a la lista de relaciones
-                        relaciones.insertFinal(linea);
-                        //relaciones[j] = linea;
-                        j++;
+                    if (linea.startsWith("usuarios")) {
+                        contador=1;
                     }
+                    if (linea.startsWith("relaciones")) {
+                        contador=2;
+                    }
+                    if (linea.startsWith("@")) {
+                        if (contador==1){
+                            // Agregamos la línea a la lista de usuarios
+                            usuarios.insertFinal(linea); 
+                            
+                            }
+                        if (contador ==2){
+                            // Agregamos la línea a la lista de relaciones
+                            relaciones.insertFinal(linea);
+                            
+                        }
+                    }
+   
                 }
 
                 // Cerramos el flujo de entrada
                 br.close();
-
-                // Imprimimos la información de los usuarios
-                System.out.println("Usuarios:");
-                Nodo pointer=usuarios.getHead();
-                while (pointer!=null) {
-                    System.out.println(pointer.getElement());
-                    pointer=pointer.getNext();}
-                    
-
-                // Imprimimos la información de las relaciones
-                System.out.println("Relaciones:");
-                Nodo pointer2=relaciones.getHead();
-                while (pointer2!=null) {
-                    System.out.println(pointer2.getElement());
-                    pointer2=pointer2.getNext();
-                }
+                
+                System.out.println("");
+                usuarios.print();
+                System.out.println("");
+                relaciones.print();
             }
             
-        }
+    }
 }
