@@ -65,7 +65,7 @@ public class Main {
                 br.close();
 
                 // Imprimimos la información de los usuarios
-                System.out.println("Usuarios:");
+//                System.out.println("Usuarios:");
                 Nodo pointer=usuarios.getHead();
                 while (pointer!=null) {
                     //if (pointer != null) {
@@ -75,7 +75,7 @@ public class Main {
                 }
 
                 // Imprimimos la información de las relaciones
-                System.out.println("Relaciones:");
+//                System.out.println("Relaciones:");
                 Nodo pointer2=relaciones.getHead();
                 while (pointer2!=null) {
                     //if (pointer2 != null) {
