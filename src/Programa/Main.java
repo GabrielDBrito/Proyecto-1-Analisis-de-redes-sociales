@@ -46,7 +46,7 @@ public class Main {
                 while ((linea = br.readLine()) != null) {
 
                     // Si la línea es un usuario
-                    if (linea.startsWith("usuarios")) {
+                    if (linea.startsWith("Usuario")) {
 
                         // Agregamos la línea a la lista de usuarios
                         usuarios.insertFinal(linea); 
@@ -82,13 +82,16 @@ public class Main {
                     System.out.println(pointer2.getElement());
                     pointer2=pointer2.getNext();
                 }
-            }        
+                System.out.println("");
+                usuarios.print();
+                relaciones.print();
+            }
         }
     
-    
+       
 
 }
+    
+  
         
-    
-    
-
+   
