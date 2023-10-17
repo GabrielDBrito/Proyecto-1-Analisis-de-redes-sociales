@@ -82,7 +82,7 @@ public class Main {
                     System.out.println(pointer2.getElement());
                     pointer2=pointer2.getNext();
                 }
-            }
+            }        
         }
     
     
