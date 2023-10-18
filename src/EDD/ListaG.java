@@ -163,6 +163,12 @@ public class ListaG {
     public boolean isEmpty() {
             return getHead()==null;    
     }
-    
+    public void print() {
+        Usuario pointer=getHead();
+        while (pointer!=null){
+            System.out.println(" ["+pointer.getId()+"] " );
+            pointer=pointer.getNext();
+        }
+    }
     
 }
