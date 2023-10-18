@@ -8,6 +8,7 @@ package Interfaces;
 //import java.io.FileReader;
 //import java.io.IOException;
 //import javax.swing.JFileChooser;
+//import ManejoTxt.AdministradorTxt;
 /**
  *
  * @author cesar
