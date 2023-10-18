@@ -60,13 +60,13 @@ public class Grafo {
         Helpers helpers = new Helpers();
         while (pointer!=null){
             Lista lista =helpers.stringSplit(pointer.getElement().toString()); //separacion del string 
-            pointer=pointer.getNext();
-            Object id1=lista.getHead().getElement(); //se almacena id1
+            Object id1=lista.getHead().getElement(); // se almacena id1
             Object id2=lista.getHead().getNext().getElement(); // se almacena id2
             Usuario usuario1=searchById(id1.toString()); // se busca el usuario correspondiente al id1 y se almacena en una variable
             Usuario usuario2=searchById(id2.toString()); // se busca el usuario correspondiente al id2 y se almacena en una variable
             usuario1.getRelaciones().insertFinal(usuario2); // se inserta el usuario 2 en la lista de relaciones del usuario 1
-            System.out.println("hola");
+            pointer=pointer.getNext();
+            System.out.println("flag");
         }
     }
     

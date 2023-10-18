@@ -62,15 +62,18 @@ public class Usuario {
         System.out.println("--------------");
         System.out.println("Id: "+getId());
         System.out.println("Numero: "+getNumero());
-        System.out.println("Relaciones: ");
-        Usuario pointer=relaciones.getHead();
+        System.out.print("Relaciones: ");
+        Usuario pointer=getRelaciones().getHead();
         while (pointer!=null){
             System.out.print("["+pointer.getId()+"]");
             pointer=pointer.getNext(); 
         }
+        System.out.println(" ");
         System.out.println("--------------");
     }
     
-    
+    public void agregarRelacion(Usuario usuario){
+        getRelaciones().insertFinal(usuario);
+    }
     
 }

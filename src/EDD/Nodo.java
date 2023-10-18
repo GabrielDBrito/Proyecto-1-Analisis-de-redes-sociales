@@ -11,13 +11,11 @@ package EDD;
 public class Nodo {
     private Object element;
     private Nodo next;
-    private Nodo previous;
 
     public Nodo(Object element) {
    
         this.element=element;
         this.next=null;
-        this.previous=null;
         
     }   
 
@@ -35,15 +33,6 @@ public class Nodo {
 
     public void setNext(Nodo element) {
         this.next = element;
-    }
-
-    public Nodo getPrevious() {
-        return previous;
-    }
-
-    public void setPrevious(Nodo previous) {
-        this.previous = previous;
-    }
-    
+    }  
     
 }

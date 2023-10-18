@@ -8,6 +8,7 @@ import EDD.Lista;
 import java.io.IOException;
 import Helpers.Helpers;
 import Grafo.Grafo;
+import Grafo.Usuario;
 import EDD.Nodo;
 /**
  * @author luis
@@ -20,18 +21,16 @@ public class Main {
         Helpers helpers=new Helpers();
         Lista usuarios =new Lista();
         Lista relaciones=new Lista();
-                
+        Usuario usuario3 =new Usuario("gabriel",17);
         admintxt.lecturaTxt(usuarios, relaciones);
-            
         grafo.crearUsuarios(usuarios);
-        System.out.println("todo bien 1");
-        grafo.crearRelaciones(relaciones);
-        System.out.println("todo bien 2");
+        Usuario usuario1 =grafo.getUsuarios().getHead();
+        Usuario usuario2=usuario1.getNext();
+        usuario2.print();
+        usuario1.getRelaciones().insertFinal(usuario2);
+        usuario1.print();
         
-        
-        
-        }
-        
+        }   
     }
         
             

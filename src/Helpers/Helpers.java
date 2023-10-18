@@ -28,7 +28,6 @@ public class Helpers {
         Lista lista = new Lista();
         lista.insertFinal(part1);
         lista.insertFinal(part2);
-        lista.print();
         return lista;
    }
     
