@@ -26,6 +26,7 @@ public class Main {
         admintxt.lecturaTxt(usuarios, relaciones);
         grafo.crearUsuarios(usuarios);
         grafo.crearRelaciones(relaciones);
+        grafo.printNodos();
         }   
     }
         
