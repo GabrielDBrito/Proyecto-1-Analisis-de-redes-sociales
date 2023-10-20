@@ -7,6 +7,7 @@ package Grafo;
 import EDD.ListaG;
 import EDD.Lista;
 import EDD.Nodo;
+import EDD.NodoG;
 import Helpers.Helpers;
 /**
  *
@@ -14,76 +15,77 @@ import Helpers.Helpers;
  * version 04/10/23
  */
 public class Grafo {
-    private ListaG usuarios;
+    private ListaG nodos;
 
     public Grafo() {
         ListaG lista=new ListaG();
-        this.usuarios=lista;
+        this.nodos=lista;
     }
 
-    public ListaG getUsuarios() {
-        return usuarios;
+    public ListaG getNodos() {
+        return nodos;
     }
 
-    public void setUsuarios(ListaG usuarios) {
-        this.usuarios = usuarios;
+    public void setNodos(ListaG nodos) {
+        this.nodos = nodos;
     }
-    
-    //imprime todos los ids
-    public void printIds() {
-        Usuario pointer=usuarios.getHead();
+
+    //imprime todos los atributos de los nodos
+    public void printNodos() {
+        NodoG pointer=nodos.getHead();
         while (pointer!=null){
-            System.out.println(" ["+pointer.getId()+"] " );
+            pointer.print();
             pointer=pointer.getNext();
         }
     }
     
     /*
-    Crea todos los usuarios (nodos del grafo) a partir de una lista que recibe como parametro
+    Crea todos los usuarios a partir de una lista
     @param usuarios
     */
-    
     public void crearUsuarios(Lista usuarios){
-        int cont=0;
+        int cont=0; //contador que le otorga el numero a cada usuario
         Nodo pointer=usuarios.getHead();
         while (pointer!= null){
             String id=pointer.getElement().toString();
             Usuario usuario=new Usuario(id,cont);
-            getUsuarios().insertFinal(usuario);
+            getNodos().insertFinal(usuario);
             cont++;
             pointer=pointer.getNext();
         }
     }
     
+    /*
+    Crea todas las relaciones a partir de una lista
+    @param relaciones
+    */
     public void crearRelaciones(Lista relaciones){
         Nodo pointer = relaciones.getHead();
         Helpers helpers = new Helpers();
         while (pointer!=null){
             Lista lista =helpers.stringSplit(pointer.getElement().toString()); //separacion del string 
-            Object id1=lista.getHead().getElement(); // se almacena id1
-            Object id2=lista.getHead().getNext().getElement(); // se almacena id2
-            Usuario usuario1=searchById(id1.toString()); // se busca el usuario correspondiente al id1 y se almacena en una variable
-            Usuario usuario2=searchById(id2.toString()); // se busca el usuario correspondiente al id2 y se almacena en una variable
-            usuario1.getRelaciones().insertFinal(usuario2); // se inserta el usuario 2 en la lista de relaciones del usuario 1
+            Object id1=lista.getHead().getElement(); // se almacena id1 (id del usuario)
+            Object id2=lista.getHead().getNext().getElement(); // se almacena id2 (id del usuario)
+            NodoG nodo1=searchById(id1.toString()); // se busca el nodoG cuyo nombre de usuario sea correspondiente al id1 y se almacena en una variable
+            NodoG nodo2=searchById(id2.toString()); // se busca el nodoG cuyo nombre de usuario sea correspondiente al id2 y se almacena en una variable
+            nodo1.getAdyacentes().insertFinal(nodo2.getUsuario()); // se inserta el nodo 2 en la lista de relaciones del nodo 1
             pointer=pointer.getNext();
-            System.out.println("flag");
         }
     }
-    
     
     /*busqueda por id
     *@param id
     *@return
     */
-    public Usuario searchById(String id){
-        if (usuarios.isEmpty()){
+    public NodoG searchById(String id){
+        if (nodos.isEmpty()){
             System.out.println("La lista esta vacia");
             return null;
         }else{
-            Usuario pointer=usuarios.getHead();
-            Usuario temp=null;
+            NodoG pointer=nodos.getHead();
+            NodoG temp=null;
             while(pointer!=null){
-                if (pointer.getId().equals(id)){
+                if (pointer.getUsuario().getId().equals(id)){ //si la entrada id corresponde al id del usuario, retorna el nodoG correspondiente
                     temp=pointer;
                     break;
                 }
@@ -102,7 +104,7 @@ public class Grafo {
     /*borrar nodo por id
     *@param id
     *@return
-    */
+    *
     public Usuario deleteById(String id){
         if (usuarios.isEmpty()){
             System.out.println("La lista ya esta vacia");
@@ -129,6 +131,7 @@ public class Grafo {
         }   
         
     }
+    */
 }
     
     

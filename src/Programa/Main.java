@@ -9,7 +9,9 @@ import java.io.IOException;
 import Helpers.Helpers;
 import Grafo.Grafo;
 import Grafo.Usuario;
-import EDD.Nodo;
+import EDD.NodoG;
+import EDD.ListaG;
+
 /**
  * @author luis
  * @version:07/10/23
@@ -21,15 +23,9 @@ public class Main {
         Helpers helpers=new Helpers();
         Lista usuarios =new Lista();
         Lista relaciones=new Lista();
-        Usuario usuario3 =new Usuario("gabriel",17);
         admintxt.lecturaTxt(usuarios, relaciones);
         grafo.crearUsuarios(usuarios);
-        Usuario usuario1 =grafo.getUsuarios().getHead();
-        Usuario usuario2=usuario1.getNext();
-        usuario2.print();
-        usuario1.getRelaciones().insertFinal(usuario2);
-        usuario1.print();
-        
+        grafo.crearRelaciones(relaciones);
         }   
     }
         

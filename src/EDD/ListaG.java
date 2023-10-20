@@ -10,7 +10,7 @@ import Grafo.Usuario;
  * version 13/10/23
  */
 public class ListaG {
-    private Usuario head;
+    private NodoG head;
     private Integer length;
 
     public ListaG() {
@@ -18,11 +18,11 @@ public class ListaG {
         this.length = 0;
     }
 
-    public Usuario getHead() {
+    public NodoG getHead() {
         return head;
     }
 
-    public void setHead(Usuario head) {
+    public void setHead(NodoG head) {
         this.head = head;
     }
 
@@ -34,48 +34,49 @@ public class ListaG {
         this.length = length;
     }
     
-    
     public void insertBegin(Usuario usuario) {
+        NodoG nodoG =new NodoG(usuario);
         if (isEmpty()){
-        setHead(usuario);
+        setHead(nodoG);
         }
         else{
-        usuario.setNext(getHead());
-        setHead(usuario);
+        nodoG.setNext(getHead());
+        setHead(nodoG);
         }
         length++;
     }
 
-    
     public void insertFinal(Usuario usuario) {
+        NodoG nodoG =new NodoG(usuario);
         if (isEmpty()){
-            setHead(usuario);
+            setHead(nodoG);
         }
         else{
-            Usuario pointer=getHead();
+            NodoG pointer=getHead();
             while (pointer.getNext()!=null){
                 pointer=pointer.getNext();
             }
-            pointer.setNext(usuario);
+            pointer.setNext(nodoG);
         }
         length++;
     }
 
     
     public void insertAtIndex(Usuario usuario, int index) {
+        NodoG nodoG =new NodoG(usuario);
         if (isEmpty() || index==0){
         insertBegin(usuario);
         }
         else {
             if (index<length){
-                Usuario pointer=getHead();
+                NodoG pointer=getHead();
                 int cont=0;
                 while (cont<index-1){
                     pointer=pointer.getNext();
                     cont++;
                 }
-                usuario.setNext(pointer.getNext());
-                pointer.setNext(usuario);
+                nodoG.setNext(pointer.getNext());
+                pointer.setNext(nodoG);
                 length++;
             } 
             else if (index==length){
@@ -88,13 +89,13 @@ public class ListaG {
     }
 
     
-    public Usuario deleteBegin() {
+    public NodoG deleteBegin() {
         if (isEmpty()){
             System.out.println("La lista ya esta vacia");
             return null;
         }
         else{
-            Usuario temp=getHead();
+            NodoG temp=getHead();
             setHead(temp.getNext());
             temp.setNext(null);
             length--;
@@ -104,17 +105,17 @@ public class ListaG {
 
    
     
-    public Usuario deleteFinal() {
+    public NodoG deleteFinal() {
         if (isEmpty()){
             System.out.println("La lista ya esta vacia");
             return null;
         }
         else{
-            Usuario pointer=getHead();
+            NodoG pointer=getHead();
             while(pointer.getNext().getNext()!=null){
                 pointer=pointer.getNext();
             }
-            Usuario temp=pointer.getNext();
+            NodoG temp=pointer.getNext();
             pointer.setNext(null);
             length--;
             return temp;
@@ -122,7 +123,7 @@ public class ListaG {
     }
 
     
-    public Usuario deleteAtIndex(int index) {
+    public NodoG deleteAtIndex(int index) {
         if (isEmpty()){
             System.out.println("La lista ya esta vacia");
             return null;
@@ -133,13 +134,13 @@ public class ListaG {
             }
             else{
                 if (index<getLength()){
-                    Usuario pointer=getHead();
+                    NodoG pointer=getHead();
                     int cont=0;
                     while(cont<index-1){
                         pointer=pointer.getNext();
                         cont++;
                     }
-                    Usuario temp=pointer.getNext();
+                    NodoG temp=pointer.getNext();
                     pointer.setNext(temp.getNext());
                     temp.setNext(null);
                     length--;
@@ -159,14 +160,14 @@ public class ListaG {
         }
     }
 
-    
     public boolean isEmpty() {
             return getHead()==null;    
     }
+    
     public void print() {
-        Usuario pointer=getHead();
+        NodoG pointer=getHead();
         while (pointer!=null){
-            System.out.println(" ["+pointer.getId()+"] " );
+            System.out.println(" ["+pointer.getUsuario().getId()+"] " );
             pointer=pointer.getNext();
         }
     }

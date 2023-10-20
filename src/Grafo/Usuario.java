@@ -4,8 +4,6 @@
  */
 package Grafo;
 
-import EDD.ListaG;
-
 /**
  *
  * @author Gabriel
@@ -16,14 +14,10 @@ import EDD.ListaG;
 public class Usuario {
     private String id;
     private Integer numero;
-    private ListaG relaciones;
-    private Usuario next;
 
     public Usuario(String nombre, Integer numero) {
         this.id = nombre;
         this.numero = numero;
-        this.relaciones = new ListaG();
-        this.next=null;
     }
 
     public String getId() {
@@ -40,40 +34,5 @@ public class Usuario {
 
     public void setNumero(Integer numero) {
         this.numero = numero;
-    }
-
-    public ListaG getRelaciones() {
-        return relaciones;
-    }
-
-    public void setRelaciones(ListaG relaciones) {
-        this.relaciones = relaciones;
-    }
-
-    public Usuario getNext() {
-        return next;
-    }
-
-    public void setNext(Usuario next) {
-        this.next = next;
-    }
-    
-    public void print(){
-        System.out.println("--------------");
-        System.out.println("Id: "+getId());
-        System.out.println("Numero: "+getNumero());
-        System.out.print("Relaciones: ");
-        Usuario pointer=getRelaciones().getHead();
-        while (pointer!=null){
-            System.out.print("["+pointer.getId()+"]");
-            pointer=pointer.getNext(); 
-        }
-        System.out.println(" ");
-        System.out.println("--------------");
-    }
-    
-    public void agregarRelacion(Usuario usuario){
-        getRelaciones().insertFinal(usuario);
-    }
-    
+    }  
 }
