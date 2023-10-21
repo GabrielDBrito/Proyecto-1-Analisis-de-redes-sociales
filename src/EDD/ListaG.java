@@ -172,4 +172,32 @@ public class ListaG {
         }
     }
     
+    /*borrar nodo por id
+    *@param id
+    *@return
+    */
+    public NodoG deleteById(String id){
+        if (isEmpty()){
+            return null;     
+        }else{
+            NodoG pointer=getHead();
+            int cont=0;
+            NodoG temp=null;
+            while(pointer!=null){
+                if (pointer.getUsuario().getId().equalsIgnoreCase(id)){
+                    temp=pointer;
+                    break;
+                }
+                pointer=pointer.getNext();
+                cont++;
+            }
+            if(temp!= null){
+                deleteAtIndex(cont);
+                return temp;
+            } else{
+                return null;
+            }
+        }     
+    }
+    
 }

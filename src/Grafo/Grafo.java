@@ -9,8 +9,8 @@ import EDD.Lista;
 import EDD.Nodo;
 import EDD.NodoG;
 import Helpers.Helpers;
+
 /**
- *
  * @author Gabriel
  * version 04/10/23
  */
@@ -85,14 +85,14 @@ public class Grafo {
             NodoG pointer=nodos.getHead();
             NodoG temp=null;
             while(pointer!=null){
-                if (pointer.getUsuario().getId().equals(id)){ //si la entrada id corresponde al id del usuario, retorna el nodoG correspondiente
+                if (pointer.getUsuario().getId().equals(id)){ //si la entrada id corresponde al id del usuario
                     temp=pointer;
                     break;
                 }
                 pointer=pointer.getNext();
             }
             if(temp!= null){
-                return temp;
+                return temp; // retorna el nodoG correspondiente
                 
             } else{
                 System.out.println("El usuario no fue encontrado");
@@ -104,17 +104,17 @@ public class Grafo {
     /*borrar nodo por id
     *@param id
     *@return
-    *
-    public Usuario deleteById(String id){
-        if (usuarios.isEmpty()){
+    */
+    public NodoG deleteById(String id){
+        if (nodos.isEmpty()){
             System.out.println("La lista ya esta vacia");
             return null;     
         }else{
-            Usuario pointer=usuarios.getHead();
+            NodoG pointer=nodos.getHead();
             int cont=0;
-            Usuario temp=null;
-            while(pointer.getNext()!=null){
-                if (pointer.getId()==id){
+            NodoG temp=null;
+            while(pointer!=null){
+                if (pointer.getUsuario().getId().equalsIgnoreCase(id)){ //si el id coincide el nodo correspondiente se almacena en la variable temp
                     temp=pointer;
                     break;
                 }
@@ -122,16 +122,21 @@ public class Grafo {
                 cont++;
             }
             if(temp!= null){
-                usuarios.deleteAtIndex(cont-1);
+                nodos.deleteAtIndex(cont); //se borra el nodo del grafo
+                NodoG pointer1=nodos.getHead();
+                while (pointer1!=null){
+                    pointer1.getAdyacentes().deleteById(id); //se recorre la lista de los adyacentes de cada nodo y se borra el nodo correspondiente al id
+                    pointer1=pointer1.getNext();
+                }
                 return temp;
-            } else{
-                System.out.println("El elemento que se queria borrar no fue encontrado");
+                } 
+                else{
+                System.out.println("El nodo no fue encontrado");
                 return null;
             }
-        }   
-        
+        }     
     }
-    */
+    
 }
     
     

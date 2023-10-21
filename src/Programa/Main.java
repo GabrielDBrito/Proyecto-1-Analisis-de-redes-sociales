@@ -8,9 +8,6 @@ import EDD.Lista;
 import java.io.IOException;
 import Helpers.Helpers;
 import Grafo.Grafo;
-import Grafo.Usuario;
-import EDD.NodoG;
-import EDD.ListaG;
 
 /**
  * @author luis
@@ -20,7 +17,6 @@ public class Main {
     public static void main(String[] args) throws IOException{
         AdministradorTxt admintxt=new AdministradorTxt();
         Grafo grafo=new Grafo();
-        Helpers helpers=new Helpers();
         Lista usuarios =new Lista();
         Lista relaciones=new Lista();
         admintxt.lecturaTxt(usuarios, relaciones);
