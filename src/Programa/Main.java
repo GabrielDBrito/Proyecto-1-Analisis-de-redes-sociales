@@ -16,6 +16,7 @@ import Grafo.Grafo;
 public class Main {
     public static void main(String[] args) throws IOException{
         AdministradorTxt admintxt=new AdministradorTxt();
+        Helpers helper=new Helpers();
         Grafo grafo=new Grafo();
         Lista usuarios =new Lista();
         Lista relaciones=new Lista();
@@ -23,6 +24,7 @@ public class Main {
         grafo.crearUsuarios(usuarios);
         grafo.crearRelaciones(relaciones);
         grafo.printNodos();
+        grafo.nuevoUsuario("@gabriel","22");
         }   
     }
         

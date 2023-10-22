@@ -15,8 +15,8 @@ public class Usuario {
     private String id;
     private Integer numero;
 
-    public Usuario(String nombre, Integer numero) {
-        this.id = nombre;
+    public Usuario(String id, Integer numero) {
+        this.id = id;
         this.numero = numero;
     }
 

@@ -95,7 +95,7 @@ public class Grafo {
                 return temp; // retorna el nodoG correspondiente
                 
             } else{
-                System.out.println("El usuario no fue encontrado");
+                //System.out.println("El usuario no fue encontrado");
                 return null;
             }
         }     
@@ -135,8 +135,21 @@ public class Grafo {
                 return null;
             }
         }     
+    }  
+    public Usuario nuevoUsuario(String id, String numero){
+        Helpers helpers=new Helpers();
+        String ID=helpers.verificarId(id, this);
+        Integer NUMERO=helpers.verificarNumero(numero, this);
+        if (ID==null || NUMERO==null){
+            return null;
+        }
+        else{
+            Usuario usuario=new Usuario(ID,NUMERO);
+            getNodos().insertFinal(usuario);
+            //faltan los adyacentes
+            return usuario;
+        }
     }
-    
 }
     
     

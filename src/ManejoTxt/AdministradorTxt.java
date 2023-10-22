@@ -19,18 +19,9 @@ public class AdministradorTxt {
     
 
     public void lecturaTxt(Lista usuarios, Lista relaciones) throws IOException{
-          
-            // Creamos el JFileChooser
-            JFileChooser jfc = new JFileChooser();
 
-            // Abrimos el cuadro de diálogo de selección de archivos
-            int seleccion = jfc.showOpenDialog(null);
-
-            // Si el usuario seleccionó un archivo
-            if (seleccion == JFileChooser.APPROVE_OPTION) {
-
-                // Obtenemos el archivo seleccionado
-                File archivo = jfc.getSelectedFile();
+                // Alacenamos el archivo con su ruta de accseso
+                File archivo =new File ("test\\Test\\proyecto1.txt");
 
                 // Creamos un flujo de entrada para leer el archivo
                 FileReader fr = new FileReader(archivo);
@@ -69,4 +60,4 @@ public class AdministradorTxt {
             }
             
     }
-}
+
