@@ -25,7 +25,6 @@ public class Main {
         grafo.crearRelaciones(relaciones);
         grafo.printNodos();
         grafo.nuevoUsuario("@gabriel","22");
-        grafo.printNodos();
         }   
     }
         

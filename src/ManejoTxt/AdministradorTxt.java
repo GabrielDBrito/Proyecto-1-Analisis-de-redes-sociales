@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import EDD.Lista;
 /**
  *
@@ -18,13 +19,24 @@ import EDD.Lista;
 public class AdministradorTxt {
     
 
-    public void lecturaTxt(Lista usuarios, Lista relaciones) throws IOException{
+    public File lecturaTxt(Lista usuarios, Lista relaciones) throws IOException{
 
-                // Alacenamos el archivo con su ruta de accseso
-                File archivo =new File ("test\\Test\\proyecto1.txt");
+            // Creamos el JFileChooser
+            JFileChooser jfc = new JFileChooser();
+
+            // Abrimos el cuadro de diálogo de selección de archivos
+            int seleccion = jfc.showOpenDialog(null);
+
+            // Si el usuario seleccionó un archivo
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+
+                // Obtenemos el archivo seleccionado
+                File archivo = jfc.getSelectedFile();
 
                 // Creamos un flujo de entrada para leer el archivo
                 FileReader fr = new FileReader(archivo);
+                
+                JOptionPane.showMessageDialog(null, "Este programa necesita guardar en el archivo los datos cargados en memoria");
                 
                 // Leemos los datos del archivo
                 BufferedReader br = new BufferedReader(fr);
@@ -48,16 +60,17 @@ public class AdministradorTxt {
                         if (contador ==2){
                             // Agregamos la línea a la lista de relaciones
                             relaciones.insertFinal(linea);
-                            
+                        } 
                         }
-                    }
+                    
    
                 }
 
                 // Cerramos el flujo de entrada
                 br.close();
-               
+                return archivo;
             }
-            
+            return null;
+    }
     }
 
