@@ -9,7 +9,9 @@ import EDD.Lista;
 import EDD.ListaArista;
 import EDD.Nodo;
 import EDD.NodoG;
+import EDD.StackNodoG;
 import Helpers.Helpers;
+
 
 /**
  * @author Gabriel
@@ -202,19 +204,68 @@ public class Grafo {
     }
     
     
-    public Grafo grafoTranspuesto(){
-        Grafo transpuesto=new Grafo();
+    public Grafo grafoTraspuesto(){
+        Grafo traspuesto=new Grafo();
         ListaG nodosTranspuestos=new ListaG();
-        transpuesto.setAristas(getAristas());
+        traspuesto.setAristas(getAristas());
         NodoG pointer=getNodos().getHead();
         while (pointer!=null){
             nodosTranspuestos.insertFinal(pointer.getUsuario());
             pointer=pointer.getNext();
         }
-        transpuesto.setNodos(nodosTranspuestos);
-        transpuesto.crearRelacionesTranspuesta();
-        return transpuesto;
+        traspuesto.setNodos(nodosTranspuestos);
+        traspuesto.crearRelacionesTranspuesta();
+        return traspuesto;
     }
+    
+    public void dfs (NodoG nodo, boolean[] visitado){
+        visitado[nodo.getUsuario().getNumero()]=true;
+        NodoG pointer=getNodos().getHead();
+        while (pointer!=null){
+            if (!visitado[pointer.getUsuario().getNumero()]){
+                dfs(pointer,visitado);
+            }
+            pointer=pointer.getNext();
+        }
+    }
+    
+    public void dfsPila(NodoG nodo, boolean[] visitado, StackNodoG pila){
+        visitado[nodo.getUsuario().getNumero()]=true;
+        NodoG pointer=getNodos().getHead();
+        while (pointer!=null){
+            if (!visitado[pointer.getUsuario().getNumero()]){
+                dfsPila( pointer, visitado, pila);
+            }
+            pointer=pointer.getNext();
+        }
+        pila.push(nodo.getUsuario());
+        pila.getPeak().setAdyacentes(nodo.getAdyacentes());
+    } 
+    
+    public void Kosaraju(){
+        StackNodoG pila=new StackNodoG();
+        boolean [] visitado= new boolean[getNodos().getLength()];
+        
+        NodoG pointer=getNodos().getHead();
+        while(pointer!=null){
+            if(!visitado[pointer.getUsuario().getNumero()]){
+                dfsPila(pointer, visitado,pila);}
+            pointer=pointer.getNext();
+        }
+        Grafo traspuesto=grafoTraspuesto();
+        
+        boolean [] visitado2= new boolean[getNodos().getLength()];
+        while(!pila.isEmpty()){
+            NodoG nodo=pila.pop();
+            if (!visitado2[nodo.getUsuario().getNumero()]){
+                dfs(nodo, visitado2);    
+            }
+            System.out.println(" ");
+        }
+        
+             
+    }
+        
 }
     
     

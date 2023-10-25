@@ -16,12 +16,14 @@ public class NodoG {
     private NodoG next;
     private ListaG adyacentes;
     private boolean visitado;
+    private Integer numeroComponente;
 
     public NodoG(Usuario usuario) {
         this.usuario = usuario;
         this.next = null;
         this.adyacentes = new ListaG();
         this.visitado=false;
+        this.numeroComponente=null;
     }
 
     public Usuario getUsuario() {
@@ -55,6 +57,15 @@ public class NodoG {
     public void setVisitado(boolean visitado) {
         this.visitado = visitado;
     }
+
+    public Integer getNumeroComponente() {
+        return numeroComponente;
+    }
+
+    public void setNumeroComponente(Integer numeroComponente) {
+        this.numeroComponente = numeroComponente;
+    }
+    
     
     
     //imprime todos los atributos del nodo

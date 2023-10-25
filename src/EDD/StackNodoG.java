@@ -53,6 +53,7 @@ public class StackNodoG {
             setPeak(pointer.getNext());
             pointer.setNext(null);
             length--;
+            System.out.print(pointer.getUsuario().getNumero());
             return pointer;
         }
     }
