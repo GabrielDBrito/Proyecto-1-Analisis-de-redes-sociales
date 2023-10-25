@@ -6,20 +6,24 @@ package Grafo;
 
 import EDD.ListaG;
 import EDD.Lista;
+import EDD.ListaArista;
 import EDD.Nodo;
 import EDD.NodoG;
 import Helpers.Helpers;
 
 /**
  * @author Gabriel
- * version 04/10/23
+ * version 24/10/23
  */
 public class Grafo {
     private ListaG nodos;
+    private ListaArista aristas;
 
     public Grafo() {
         ListaG lista=new ListaG();
+        ListaArista lista1=new ListaArista();
         this.nodos=lista;
+        this.aristas=lista1;
     }
 
     public ListaG getNodos() {
@@ -30,9 +34,26 @@ public class Grafo {
         this.nodos = nodos;
     }
 
+    public ListaArista getAristas() {
+        return aristas;
+    }
+
+    public void setAristas(ListaArista aristas) {
+        this.aristas = aristas;
+    }
+
     //imprime todos los atributos de los nodos
     public void printNodos() {
         NodoG pointer=nodos.getHead();
+        while (pointer!=null){
+            pointer.print();
+            pointer=pointer.getNext();
+        }
+    }
+    
+    //imprime todos los atributos de los nodos
+    public void printAristas(){
+        Arista pointer=aristas.getHead();
         while (pointer!=null){
             pointer.print();
             pointer=pointer.getNext();
@@ -69,6 +90,8 @@ public class Grafo {
             NodoG nodo1=searchById(id1.toString()); // se busca el nodoG cuyo nombre de usuario sea correspondiente al id1 y se almacena en una variable
             NodoG nodo2=searchById(id2.toString()); // se busca el nodoG cuyo nombre de usuario sea correspondiente al id2 y se almacena en una variable
             nodo1.getAdyacentes().insertFinal(nodo2.getUsuario()); // se inserta el nodo 2 en la lista de relaciones del nodo 1
+            Arista arista=new Arista(nodo1,nodo2);
+            getAristas().insertFinal(arista);
             pointer=pointer.getNext();
         }
     }
@@ -135,7 +158,13 @@ public class Grafo {
                 return null;
             }
         }     
-    }  
+    }
+    
+    /*
+    Agrega un nuevo usuario
+    @Param id, numero
+    @return
+    */
     public Usuario nuevoUsuario(String id, String numero){
         Helpers helpers=new Helpers();
         String ID=helpers.verificarId(id, this);
@@ -149,6 +178,42 @@ public class Grafo {
             //faltan los adyacentes
             return usuario;
         }
+    }
+    
+    /*
+    Crea las relaciones del grafo a partir de las aristas
+    Este metodo se utiliza para generar las relaciones del grafo transpuesto
+  
+    */  
+    public void crearRelacionesTranspuesta(){
+        Arista pointer = getAristas().getHead();
+        ListaArista lista2=new ListaArista();
+        while (pointer!=null){
+            String id1=pointer.getInicio().getUsuario().getId();
+            String id2=pointer.getObjetivo().getUsuario().getId();
+            NodoG nodo1=searchById(id1); // se busca el nodoG cuyo nombre de usuario sea correspondiente al id1 y se almacena en una variable
+            NodoG nodo2=searchById(id2); // se busca el nodoG cuyo nombre de usuario sea correspondiente al id2 y se almacena en una variable
+            nodo2.getAdyacentes().insertFinal(nodo1.getUsuario()); //inserta el nodo 1 en los adyacentes del 2 (se hace al reves porque es la transpuesta)
+            Arista arista=new Arista(nodo2,nodo1); //Se crea la nueva arista al reves (se hace al reves porque es la transpuesta)
+            lista2.insertFinal(arista); //se insertan las aristas transpuestas en una lista
+            pointer=pointer.getNext();
+        }
+        setAristas(lista2); //se establece la lista de las aristas transpuestas como las aristas del grafo
+    }
+    
+    
+    public Grafo grafoTranspuesto(){
+        Grafo transpuesto=new Grafo();
+        ListaG nodosTranspuestos=new ListaG();
+        transpuesto.setAristas(getAristas());
+        NodoG pointer=getNodos().getHead();
+        while (pointer!=null){
+            nodosTranspuestos.insertFinal(pointer.getUsuario());
+            pointer=pointer.getNext();
+        }
+        transpuesto.setNodos(nodosTranspuestos);
+        transpuesto.crearRelacionesTranspuesta();
+        return transpuesto;
     }
 }
     

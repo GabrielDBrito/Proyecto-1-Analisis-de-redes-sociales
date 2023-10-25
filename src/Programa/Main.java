@@ -23,8 +23,8 @@ public class Main {
         admintxt.lecturaTxt(usuarios, relaciones);
         grafo.crearUsuarios(usuarios);
         grafo.crearRelaciones(relaciones);
-        grafo.printNodos();
-        grafo.nuevoUsuario("@gabriel","22");
+        Grafo transpuesto=grafo.grafoTranspuesto();
+        
         }   
     }
         
