@@ -8,6 +8,7 @@ import EDD.Lista;
 import java.io.IOException;
 import Helpers.Helpers;
 import Grafo.Grafo;
+import Interfaces.Menu;
 
 /**
  * @author luis
@@ -15,15 +16,9 @@ import Grafo.Grafo;
  */
 public class Main {
     public static void main(String[] args) throws IOException{
-        AdministradorTxt admintxt=new AdministradorTxt();
-        Helpers helper=new Helpers();
-        Grafo grafo=new Grafo();
-        Lista usuarios =new Lista();
-        Lista relaciones=new Lista();
-        admintxt.lecturaTxt(usuarios, relaciones);
-        grafo.crearUsuarios(usuarios);
-        grafo.crearRelaciones(relaciones);
-        Grafo transpuesto=grafo.grafoTranspuesto();
+        Menu ventana = new Menu();
+        ventana.setVisible(true);
+        
         
         }   
     }
