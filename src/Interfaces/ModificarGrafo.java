@@ -9,6 +9,10 @@ package Interfaces;
  * @author cesar
  */
 public class ModificarGrafo extends javax.swing.JFrame {
+<<<<<<< HEAD
+=======
+    
+>>>>>>> beef4476d0debc9e5f3e1850efab69ccbfc2ef76
     public static Menu v1;
 
     /**
@@ -32,55 +36,91 @@ public class ModificarGrafo extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+<<<<<<< HEAD
         jPanel2 = new javax.swing.JPanel();
+=======
+>>>>>>> beef4476d0debc9e5f3e1850efab69ccbfc2ef76
         Eliminar = new javax.swing.JButton();
         Agregar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+<<<<<<< HEAD
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+=======
+        jPanel1.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Eliminar.setBackground(new java.awt.Color(255, 153, 102));
+>>>>>>> beef4476d0debc9e5f3e1850efab69ccbfc2ef76
         Eliminar.setText("ELIMINAR");
         Eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EliminarActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
         jPanel2.add(Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 200, 70));
 
+=======
+        jPanel1.add(Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 220, 90));
+
+        Agregar.setBackground(new java.awt.Color(255, 153, 102));
+>>>>>>> beef4476d0debc9e5f3e1850efab69ccbfc2ef76
         Agregar.setText("AGREGAR");
         Agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
         jPanel2.add(Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 200, 70));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 490));
+=======
+        jPanel1.add(Agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, 220, 90));
+>>>>>>> beef4476d0debc9e5f3e1850efab69ccbfc2ef76
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+=======
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 918, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+>>>>>>> beef4476d0debc9e5f3e1850efab69ccbfc2ef76
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
+<<<<<<< HEAD
         Agregar v3 = new Agregar(this);
     }//GEN-LAST:event_AgregarActionPerformed
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         Eliminar v4 = new Eliminar(this);
+=======
+        Agregar v4 = new Agregar(this);
+    }//GEN-LAST:event_AgregarActionPerformed
+
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+        Eliminar v5 = new Eliminar(this);
+>>>>>>> beef4476d0debc9e5f3e1850efab69ccbfc2ef76
     }//GEN-LAST:event_EliminarActionPerformed
 
     /**
@@ -122,6 +162,9 @@ public class ModificarGrafo extends javax.swing.JFrame {
     private javax.swing.JButton Agregar;
     private javax.swing.JButton Eliminar;
     private javax.swing.JPanel jPanel1;
+<<<<<<< HEAD
     private javax.swing.JPanel jPanel2;
+=======
+>>>>>>> beef4476d0debc9e5f3e1850efab69ccbfc2ef76
     // End of variables declaration//GEN-END:variables
 }

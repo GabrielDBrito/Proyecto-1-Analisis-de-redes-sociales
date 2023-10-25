@@ -14,6 +14,11 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     public Menu() {
+<<<<<<< HEAD
+=======
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+>>>>>>> beef4476d0debc9e5f3e1850efab69ccbfc2ef76
         initComponents();
     }
 
@@ -27,6 +32,7 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+<<<<<<< HEAD
         CargarArchivo = new javax.swing.JButton();
         ModificarGrafo = new javax.swing.JButton();
         CompsFuerteConex = new javax.swing.JButton();
@@ -47,12 +53,42 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(CargarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 320, -1));
 
+=======
+        CargaArchivo = new javax.swing.JButton();
+        CompsFuerteConex = new javax.swing.JButton();
+        ModificarGrafo = new javax.swing.JButton();
+        ActualizarRepo = new javax.swing.JButton();
+        MostrarGrafo = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 204, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        CargaArchivo.setBackground(new java.awt.Color(255, 153, 102));
+        CargaArchivo.setText("CARGAR ARCHIVO");
+        CargaArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CargaArchivoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(CargaArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 280, -1));
+
+        CompsFuerteConex.setBackground(new java.awt.Color(255, 153, 102));
+        CompsFuerteConex.setText("COMPONENTES FUERTEMENTE CONECTADOS");
+        jPanel1.add(CompsFuerteConex, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 300, -1));
+
+        ModificarGrafo.setBackground(new java.awt.Color(255, 153, 102));
+>>>>>>> beef4476d0debc9e5f3e1850efab69ccbfc2ef76
         ModificarGrafo.setText("MODIFICAR GRAFO");
         ModificarGrafo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModificarGrafoActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
         jPanel1.add(ModificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 320, -1));
 
         CompsFuerteConex.setText("COMPONENTES FUERTEMENTE CONECTADOS");
@@ -71,6 +107,29 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(EXIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 460, 70, -1));
+=======
+        jPanel1.add(ModificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 280, -1));
+
+        ActualizarRepo.setBackground(new java.awt.Color(255, 153, 102));
+        ActualizarRepo.setText("ACTUALIZAR REPO");
+        jPanel1.add(ActualizarRepo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 280, -1));
+
+        MostrarGrafo.setBackground(new java.awt.Color(255, 153, 102));
+        MostrarGrafo.setText("MOSTRAR GRAFO");
+        jPanel1.add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 280, -1));
+
+        jButton1.setBackground(new java.awt.Color(255, 153, 102));
+        jButton1.setText("X");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 90, 20));
+
+        jButton2.setText("jButton2");
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 270, 250));
+>>>>>>> beef4476d0debc9e5f3e1850efab69ccbfc2ef76
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,6 +145,7 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+<<<<<<< HEAD
     private void EXITActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EXITActionPerformed
         this.dispose();
     }//GEN-LAST:event_EXITActionPerformed
@@ -97,6 +157,18 @@ public class Menu extends javax.swing.JFrame {
 
     private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
         ModificarGrafo v2 = new ModificarGrafo(this);
+=======
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void CargaArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargaArchivoActionPerformed
+        CargaArchivo v2 = new CargaArchivo(this);
+    }//GEN-LAST:event_CargaArchivoActionPerformed
+
+    private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
+        ModificarGrafo v3 = new ModificarGrafo(this);
+>>>>>>> beef4476d0debc9e5f3e1850efab69ccbfc2ef76
     }//GEN-LAST:event_ModificarGrafoActionPerformed
 
     /**
@@ -135,12 +207,22 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JButton ActuRepo1;
     private javax.swing.JButton CargarArchivo;
     private javax.swing.JButton CompsFuerteConex;
     private javax.swing.JButton EXIT;
     private javax.swing.JButton ModificarGrafo;
     private javax.swing.JButton MostrarGrafo1;
+=======
+    private javax.swing.JButton ActualizarRepo;
+    private javax.swing.JButton CargaArchivo;
+    private javax.swing.JButton CompsFuerteConex;
+    private javax.swing.JButton ModificarGrafo;
+    private javax.swing.JButton MostrarGrafo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+>>>>>>> beef4476d0debc9e5f3e1850efab69ccbfc2ef76
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
