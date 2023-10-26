@@ -5,12 +5,18 @@
 package Interfaces;
 
 import EDD.Lista;
+import EDD.Nodo;
+import EDD.NodoG;
+import Grafo.Arista;
 import Grafo.Grafo;
 import Helpers.Helpers;
 import ManejoTxt.AdministradorTxt;
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -70,6 +76,11 @@ public class Menu extends javax.swing.JFrame {
 
         ActualizarRepo.setBackground(new java.awt.Color(255, 153, 102));
         ActualizarRepo.setText("ACTUALIZAR REPO");
+        ActualizarRepo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarRepoActionPerformed(evt);
+            }
+        });
 
         MostrarGrafo.setBackground(new java.awt.Color(255, 153, 102));
         MostrarGrafo.setText("MOSTRAR GRAFO");
@@ -168,7 +179,19 @@ public class Menu extends javax.swing.JFrame {
         ModificarGrafo v3 = new ModificarGrafo(this);
     }//GEN-LAST:event_ModificarGrafoActionPerformed
 
+    private void ActualizarRepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarRepoActionPerformed
+        AdministradorTxt admintxt=new AdministradorTxt();
+        Grafo grafo = new Grafo();  // Reemplaza obtenerGrafo() con tu lógica para obtener un objeto Grafo
+        File archivo = new File("archivo.txt");  // Reemplaza con el archivo deseado
+        admintxt.escrituraTxt(grafo, archivo);
+    }//GEN-LAST:event_ActualizarRepoActionPerformed
+
+    
+    
+    
+    
     /**
+     *
      * @param args the command line arguments
      */
     public static void main(String args[]) {
