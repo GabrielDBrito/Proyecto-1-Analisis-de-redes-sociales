@@ -282,4 +282,30 @@ public class Grafo {
         // Muestra el GraphStream
         grafo.display();
     }
+    
+    public String usuariosToString() {
+        String usuarios = "Usuarios\n";
+        NodoG temp = getNodos().getHead();
+        while (temp != null) {
+            String usuarioString=Integer.toString(temp.getUsuario().getNumero());
+            usuarios +=usuarioString;
+            temp = temp.getNext();
+        }
+        return usuarios;
+    }
+    
+    /*public String aristasToString() {
+        String friendships = "Relaciones\n";
+        Arista temp = getAristas().getHead();
+        while (temp != null) {
+            String auxString = (Integer.toString(temp.getInicio().getUsuario().getNumero())+ "," + (Integer.toString(temp.getInicio().getUsuario().getNumero())));
+            friendships += (friendships.contains(auxString)) ? "" : auxString;
+            auxEdge = auxEdge.getpNext();
+            
+
+            temp = temp.getpNext();
+        }
+        return friendships;
+    }
+*/
 }

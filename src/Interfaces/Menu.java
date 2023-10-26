@@ -17,13 +17,24 @@ import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.MultiGraph;
+import org.graphstream.ui.view.Viewer;
+import org.graphstream.ui.swing_viewer.SwingViewer;
+import org.graphstream.ui.swing_viewer.ViewPanel;
 
 /**
  *
  * @author cesar
  */
 public class Menu extends javax.swing.JFrame {
-
+    private Grafo grafo;
+    
+    
     /**
      * Creates new form Menu
      */
@@ -33,6 +44,15 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
     }
 
+    public Grafo getGrafo() {
+        return grafo;
+    }
+
+    public void setGrafo(Grafo grafo) {
+        this.grafo = grafo;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,7 +95,7 @@ public class Menu extends javax.swing.JFrame {
         });
 
         ActualizarRepo.setBackground(new java.awt.Color(255, 153, 102));
-        ActualizarRepo.setText("ACTUALIZAR REPO");
+        ActualizarRepo.setText("ACTUALIZAR REPOSITORIO");
         ActualizarRepo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ActualizarRepoActionPerformed(evt);
@@ -84,6 +104,11 @@ public class Menu extends javax.swing.JFrame {
 
         MostrarGrafo.setBackground(new java.awt.Color(255, 153, 102));
         MostrarGrafo.setText("MOSTRAR GRAFO");
+        MostrarGrafo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarGrafoActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(255, 153, 102));
         jButton1.setText("X");
@@ -113,14 +138,13 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(260, 260, 260)
                 .addComponent(ActualizarRepo, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(260, 260, 260)
-                .addComponent(MostrarGrafo, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(250, 250, 250)
-                .addComponent(CompsFuerteConex, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(720, 720, 720)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(260, 260, 260)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CompsFuerteConex, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MostrarGrafo, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,6 +187,7 @@ public class Menu extends javax.swing.JFrame {
         AdministradorTxt admintxt=new AdministradorTxt();
         Helpers helper=new Helpers();
         Grafo grafo=new Grafo();
+        //this.grafo=grafo;
         Lista usuarios =new Lista();
         Lista relaciones=new Lista();
         try {
@@ -172,7 +197,8 @@ public class Menu extends javax.swing.JFrame {
         }
         grafo.crearUsuarios(usuarios);
         grafo.crearRelaciones(relaciones);
-        Grafo traspuesto=grafo.grafoTraspuesto();
+        setGrafo(grafo);
+        getGrafo().printNodos();
     }//GEN-LAST:event_CargaArchivoActionPerformed
 
     private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
@@ -185,6 +211,72 @@ public class Menu extends javax.swing.JFrame {
         File archivo = new File("archivo.txt");  // Reemplaza con el archivo deseado
         admintxt.escrituraTxt(grafo, archivo);
     }//GEN-LAST:event_ActualizarRepoActionPerformed
+    
+    
+    
+    private void displayGraph(Graph graph2) {
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JPanel panel = new JPanel(new GridLayout()){
+        @Override
+        public Dimension getPreferredSize() {
+            return new Dimension(800, 480);
+            }
+        };
+        frame.setSize(panel.getWidth(), panel.getHeight());
+     
+        Viewer viewer = new SwingViewer(graph2, Viewer.ThreadingModel.GRAPH_IN_GUI_THREAD);
+        viewer.enableAutoLayout();
+        ViewPanel viewPanel = (ViewPanel) viewer.addDefaultView(false);
+        panel.add(viewPanel);
+        frame.add(panel);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);      
+    }
+    
+    
+    private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed
+        
+        try{
+        
+        Graph graphLibrary = new MultiGraph("LGC Social");
+        System.setProperty("org.graphstream.ui", "swing");
+        NodoG auxNodo =getGrafo().getNodos().getHead();
+        auxNodo.print();;
+          
+        
+        graphLibrary.setAttribute("ui.stylesheet", "node{\n" +
+                "    size: 30px, 30px;\n" +
+                "    fill-color: orange;\n" +
+                "    text-mode: normal; \n" +
+                "}");
+        //Recorre los nodos y los agrega al grafo
+        while(auxNodo!=null){
+            String numero=Integer.toString(auxNodo.getUsuario().getNumero());
+            graphLibrary.addNode(numero);
+            graphLibrary.getNode(numero).setAttribute("ui.label", numero);
+            graphLibrary.getNode(numero).setAttribute("ui.frozen");
+            auxNodo=auxNodo.getNext();
+        }   
+              
+        
+        //Recorre las aristas y las agrega al grafo
+        Arista arista=getGrafo().getAristas().getHead();
+        while(arista!=null){
+            String n1=Integer.toString(arista.getInicio().getUsuario().getNumero());
+            String n2=Integer.toString(arista.getObjetivo().getUsuario().getNumero());
+            String id=n1+n2;
+            graphLibrary.addEdge(id,n1,n2, true);
+            arista=arista.getNext();
+        }
+        this.displayGraph(graphLibrary);
+        }
+        catch(Exception err){
+                JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo");
+        }
+    }//GEN-LAST:event_MostrarGrafoActionPerformed
 
     
     
