@@ -4,6 +4,14 @@
  */
 package Interfaces;
 
+import EDD.Lista;
+import Grafo.Grafo;
+import Helpers.Helpers;
+import ManejoTxt.AdministradorTxt;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author cesar
@@ -40,7 +48,6 @@ public class Menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 153));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CargaArchivo.setBackground(new java.awt.Color(255, 153, 102));
         CargaArchivo.setText("CARGAR ARCHIVO");
@@ -49,11 +56,9 @@ public class Menu extends javax.swing.JFrame {
                 CargaArchivoActionPerformed(evt);
             }
         });
-        jPanel1.add(CargaArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 280, -1));
 
         CompsFuerteConex.setBackground(new java.awt.Color(255, 153, 102));
         CompsFuerteConex.setText("COMPONENTES FUERTEMENTE CONECTADOS");
-        jPanel1.add(CompsFuerteConex, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 300, -1));
 
         ModificarGrafo.setBackground(new java.awt.Color(255, 153, 102));
         ModificarGrafo.setText("MODIFICAR GRAFO");
@@ -62,15 +67,12 @@ public class Menu extends javax.swing.JFrame {
                 ModificarGrafoActionPerformed(evt);
             }
         });
-        jPanel1.add(ModificarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 280, -1));
 
         ActualizarRepo.setBackground(new java.awt.Color(255, 153, 102));
         ActualizarRepo.setText("ACTUALIZAR REPO");
-        jPanel1.add(ActualizarRepo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, 280, -1));
 
         MostrarGrafo.setBackground(new java.awt.Color(255, 153, 102));
         MostrarGrafo.setText("MOSTRAR GRAFO");
-        jPanel1.add(MostrarGrafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 280, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 153, 102));
         jButton1.setText("X");
@@ -79,10 +81,54 @@ public class Menu extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 90, 20));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LGC Social.png"))); // NOI18N
         jButton2.setText("jButton2");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 270, 250));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(260, 260, 260)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(260, 260, 260)
+                .addComponent(CargaArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(260, 260, 260)
+                .addComponent(ModificarGrafo, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(260, 260, 260)
+                .addComponent(ActualizarRepo, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(260, 260, 260)
+                .addComponent(MostrarGrafo, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(CompsFuerteConex, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(720, 720, 720)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(CargaArchivo)
+                .addGap(6, 6, 6)
+                .addComponent(ModificarGrafo)
+                .addGap(6, 6, 6)
+                .addComponent(ActualizarRepo)
+                .addGap(6, 6, 6)
+                .addComponent(MostrarGrafo)
+                .addGap(6, 6, 6)
+                .addComponent(CompsFuerteConex)
+                .addGap(36, 36, 36)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,7 +149,19 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void CargaArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargaArchivoActionPerformed
-        CargaArchivo v2 = new CargaArchivo(this);
+        AdministradorTxt admintxt=new AdministradorTxt();
+        Helpers helper=new Helpers();
+        Grafo grafo=new Grafo();
+        Lista usuarios =new Lista();
+        Lista relaciones=new Lista();
+        try {
+            admintxt.lecturaTxt(usuarios, relaciones);
+        } catch (IOException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        grafo.crearUsuarios(usuarios);
+        grafo.crearRelaciones(relaciones);
+        Grafo traspuesto=grafo.grafoTraspuesto();
     }//GEN-LAST:event_CargaArchivoActionPerformed
 
     private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed

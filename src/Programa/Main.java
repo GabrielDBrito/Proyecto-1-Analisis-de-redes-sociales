@@ -3,12 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package Programa;
-import ManejoTxt.AdministradorTxt;
-import EDD.Lista;
 import java.io.IOException;
-import Helpers.Helpers;
-import Grafo.Grafo;
-import java.io.File;
+import Interfaces.Menu;
 
 
 /**
@@ -17,21 +13,13 @@ import java.io.File;
  */
 public class Main {
     public static void main(String[] args) throws IOException{
-        AdministradorTxt admintxt=new AdministradorTxt();
-        Helpers helper=new Helpers();
-        Grafo grafo=new Grafo();       
-        Lista usuarios =new Lista();
-        Lista relaciones=new Lista();
-        File archivo=admintxt.lecturaTxt(usuarios, relaciones);
-        grafo.crearUsuarios(usuarios);
-        grafo.crearRelaciones(relaciones);
-        Lista lista =new Lista();
-        lista.insertFinal("@radiogaga");
-        lista.insertFinal("@juanc");
-        grafo.nuevoUsuario("@juanito",lista);
-        grafo.deleteById("@radiogaga");
-        admintxt.escrituraTxt(grafo,archivo);
-        }  
+
+        Menu ventana = new Menu();
+        ventana.setVisible(true);
+        
+        
+        }   
+
     }
         
             

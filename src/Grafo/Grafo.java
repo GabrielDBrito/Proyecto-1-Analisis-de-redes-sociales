@@ -10,7 +10,12 @@ import EDD.ListaArista;
 import EDD.Nodo;
 import EDD.NodoG;
 import EDD.StackNodoG;
+import Grafo.Usuario;
 import Helpers.Helpers;
+import org.graphstream.graph.Node;
+import org.graphstream.graph.Edge;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.SingleGraph;
 
 
 /**
@@ -18,8 +23,9 @@ import Helpers.Helpers;
  * version 24/10/23
  */
 public class Grafo {
-    private ListaG nodos;
-    private ListaArista aristas;
+    private static ListaG nodos;
+    private static ListaArista aristas;
+    // lo de estatic es una prueba 
 
     public Grafo() {
         ListaG lista=new ListaG();
@@ -28,7 +34,7 @@ public class Grafo {
         this.aristas=lista1;
     }
 
-    public ListaG getNodos() {
+    public static ListaG getNodos() {
         return nodos;
     }
 
@@ -36,7 +42,7 @@ public class Grafo {
         this.nodos = nodos;
     }
 
-    public ListaArista getAristas() {
+    public static ListaArista getAristas() {
         return aristas;
     }
 
@@ -253,12 +259,27 @@ public class Grafo {
         traspuesto.crearRelacionesTranspuesta();
         return traspuesto;
     }
-     
-}
+   
     
-    
-    
-    
-    
-    
+    public static void grafo(String[] args) {
+        Graph grafo = new SingleGraph("Grafo red social");
+        // Añade los nodos al GraphStream
+        NodoG nodo = nodos.getHead();
+        NodoG temp = null;
+        while (nodo !=null){
+            Node node = grafo.addNode(nodo.getUsuario().getId());
+            node.setAttribute("label", nodo.getUsuario().getId());
+        }
+        
+        // Añade las aristas al GraphStream
+        Arista arista = aristas.getHead();
+        Arista temp2 = null;
+        while (arista != null) {
+            Edge edge = grafo.addEdge(arista.getInicio().getUsuario().getId(), arista.getInicio().getUsuario().getId(), arista.getObjetivo().getUsuario().getId());
+            edge.setAttribute("label", arista.getInicio().getUsuario().getId() + " - " + arista.getObjetivo().getUsuario().getId());
+        }
 
+        // Muestra el GraphStream
+        grafo.display();
+    }
+}
