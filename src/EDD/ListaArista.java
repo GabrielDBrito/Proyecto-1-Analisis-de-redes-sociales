@@ -122,7 +122,7 @@ public class ListaArista {
             return getHead()==null;    
     }
     
-    public Arista deleteByIds(String id1, String id2){
+    public Arista deleteById(String id1){
         if (isEmpty()){
             return null;     
         }else{
@@ -130,7 +130,7 @@ public class ListaArista {
             int cont=0;
             Arista temp=null;
             while(pointer!=null){
-                if (pointer.getInicio().getUsuario().getId().equalsIgnoreCase(id1) && pointer.getObjetivo().getUsuario().getId().equalsIgnoreCase(id2)){
+                if (pointer.getInicio().getUsuario().getId().equalsIgnoreCase(id1) || pointer.getObjetivo().getUsuario().getId().equalsIgnoreCase(id1)){
                     temp=pointer;
                     break;
                 }

@@ -50,12 +50,12 @@ public class Helpers {
                 return numero;
 
             } else {
-                JOptionPane.showMessageDialog(null, "Numnero invalido. ");
+                JOptionPane.showMessageDialog(null, "Numnero invalido1. ");
                 return null;
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Numnero invalido. ");
+            JOptionPane.showMessageDialog(null, "Numnero invalido1. ");
         }
 
         return null;
@@ -113,36 +113,73 @@ public class Helpers {
         }
       }
     
+    /**
+     * verifica si el nombre de usuario ingresado por parametro existe en el grafo
+     * 
+     * @param id, grafo
+     * @return
+     */
+    public boolean usuarioValido(String id, Grafo grafo){
+        NodoG nodo= grafo.searchById(id);
+        if (nodo!= null){
+            return true;
+        }else{
+            JOptionPane.showMessageDialog(null, "El usuario "+id+" no existe");
+            return false;
+        }
+    }
     
     /**
      * verifica si el numero ingresado por parametro es valido (es realmente un numero y no esta siendo utilizado por otro usuario).
      * 
-     * @param id
+     * @param id, grafo
      * @return
      */
      public Integer verificarNumero(String numString, Grafo grafo){
-        Integer verificacion=valorNumero(numString);
-        if (verificacion!=null){
+         
             NodoG pointer=grafo.getNodos().getHead();
+            Integer numero=Integer.parseInt(numString);
             int igual=0;
             while(pointer!=null){
-                if (pointer.getUsuario().getNumero()==verificacion){
+                
+                if (pointer.getUsuario().getNumero()==numero){
                     igual=1;
                 }
                 pointer=pointer.getNext();  
             }
-            if (igual==0){
-                return verificacion;
-            }
+                if (igual==0){
+                return numero;
+            }   
             else{
-                JOptionPane.showMessageDialog(null, "Numero invalido. ");
                 return null;
             }
             
-        } else{
-            return null;
         }   
-    }   
+       
+    /*
+     busca el menor numero disponible(que no este utilizado par algun otro usuario)
+     @param grafo
+     @return
+     
+     */
+    public Integer buscarNumero(Grafo grafo){
+        int contador =0;
+        boolean valido=false;
+        while(valido!=true){
+            String strContador=Integer.toString(contador);
+            Integer numero=verificarNumero(strContador,grafo);
+            if (numero!=null){
+                valido=true;
+                return numero;
+            } else{
+                contador++;
+            }
+            
+        }
+        return null;
+    }
+    
+    
 }
     
    

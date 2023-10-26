@@ -8,8 +8,8 @@ import EDD.Lista;
 import java.io.IOException;
 import Helpers.Helpers;
 import Grafo.Grafo;
-import EDD.NodoG;
-import DFS.Kosaraju;
+import java.io.File;
+
 
 /**
  * @author luis
@@ -22,24 +22,16 @@ public class Main {
         Grafo grafo=new Grafo();       
         Lista usuarios =new Lista();
         Lista relaciones=new Lista();
-        admintxt.lecturaTxt(usuarios, relaciones);
+        File archivo=admintxt.lecturaTxt(usuarios, relaciones);
         grafo.crearUsuarios(usuarios);
         grafo.crearRelaciones(relaciones);
-       
-        grafo.Kosaraju();
-        
-        
-        /*NodoG pointer=grafo.getNodos().getHead();
-        
-        while(pointer!=null){
-            System.out.println("------------------");
-            System.out.println("Numero: "+pointer.getUsuario().getNumero());
-            System.out.println("Numero de componente: "+pointer.getNumeroComponente());
-            System.out.println("------------------");
-            pointer=pointer.getNext();
-        }
-    */
-        }   
+        Lista lista =new Lista();
+        lista.insertFinal("@radiogaga");
+        lista.insertFinal("@juanc");
+        grafo.nuevoUsuario("@juanito",lista);
+        grafo.deleteById("@radiogaga");
+        admintxt.escrituraTxt(grafo,archivo);
+        }  
     }
         
             

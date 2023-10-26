@@ -138,7 +138,7 @@ public class Grafo {
             NodoG pointer=nodos.getHead();
             int cont=0;
             NodoG temp=null;
-            while(pointer!=null){
+            while(pointer!=null){ //recorre la lista que contiene todos los nodos del grafo
                 if (pointer.getUsuario().getId().equalsIgnoreCase(id)){ //si el id coincide el nodo correspondiente se almacena en la variable temp
                     temp=pointer;
                     break;
@@ -148,15 +148,28 @@ public class Grafo {
             }
             if(temp!= null){
                 nodos.deleteAtIndex(cont); //se borra el nodo del grafo
-                NodoG pointer1=nodos.getHead();
-                while (pointer1!=null){
-                    pointer1.getAdyacentes().deleteById(id); //se recorre la lista de los adyacentes de cada nodo y se borra el nodo correspondiente al id
+                NodoG pointer1=getNodos().getHead();
+                while (pointer1!=null){ //se recorre nuevamente la lista que contiene todos los nodos del grafo
+                    NodoG pointer2=pointer1.getAdyacentes().getHead();
+                    int contador=0;
+                    while(pointer2!=null){ //se recorre la lista de adyacentes de cada nodo del grafo
+                        if (pointer2.getUsuario().getId().equalsIgnoreCase(id)){
+                            //si se encuentra la lista de adyacencias el nodo que fue borrado, se borra de la lista de adyacencias tambien
+                            pointer1.getAdyacentes().deleteAtIndex(contador); 
+                        }
+                        contador++;
+                        pointer2=pointer2.getNext();
+                    }
                     pointer1=pointer1.getNext();
+                }
+                //se ejecuta el metodo borrar por id tantas veces como la longitud de la lista de aristas
+                //si encuentra el id del nodo borrado del grafo en alguna de las aristas, borra dicha arista
+                for (int i=0; i<getAristas().getLength();i++){  
+                    getAristas().deleteById(id);
                 }
                 return temp;
                 } 
                 else{
-                System.out.println("El nodo no fue encontrado");
                 return null;
             }
         }     
@@ -164,20 +177,38 @@ public class Grafo {
     
     /*
     Agrega un nuevo usuario
-    @Param id, numero
+    @Param id, numero, adyacentes
     @return
     */
-    public Usuario nuevoUsuario(String id, String numero){
+    public Usuario nuevoUsuario(String id, Lista adyacentes){
         Helpers helpers=new Helpers();
         String ID=helpers.verificarId(id, this);
-        Integer NUMERO=helpers.verificarNumero(numero, this);
-        if (ID==null || NUMERO==null){
+        Integer NUMERO=helpers.buscarNumero(this);
+        boolean ADYACENTES=true;
+        Nodo pointer=adyacentes.getHead();
+        while (pointer!=null){
+            boolean verificar=helpers.usuarioValido(pointer.getElement().toString(), this);
+            if (verificar==false){
+                ADYACENTES=false;
+            }
+            pointer=pointer.getNext();
+        }
+        
+        if (ID==null || NUMERO==null || ADYACENTES==false){
             return null;
         }
         else{
             Usuario usuario=new Usuario(ID,NUMERO);
             getNodos().insertFinal(usuario);
-            //faltan los adyacentes
+            NodoG nodo =searchById(ID);
+            Nodo pointer1=adyacentes.getHead();
+            while (pointer1!=null){
+                NodoG nodo2 =searchById(pointer1.getElement().toString());
+                Arista arista=new Arista(nodo, nodo2);
+                getAristas().insertFinal(arista);
+                nodo.getAdyacentes().insertFinal(nodo2.getUsuario());
+                pointer1=pointer1.getNext();
+            }
             return usuario;
         }
     }
@@ -203,6 +234,11 @@ public class Grafo {
         setAristas(lista2); //se establece la lista de las aristas transpuestas como las aristas del grafo
     }
     
+    /*
+    Crea el grafo traspuesto (grafo con la direccion de las aristas invertidas)
+    @return
+    
+    */
     
     public Grafo grafoTraspuesto(){
         Grafo traspuesto=new Grafo();
@@ -217,55 +253,7 @@ public class Grafo {
         traspuesto.crearRelacionesTranspuesta();
         return traspuesto;
     }
-    
-    public void dfs (NodoG nodo, boolean[] visitado){
-        visitado[nodo.getUsuario().getNumero()]=true;
-        NodoG pointer=getNodos().getHead();
-        while (pointer!=null){
-            if (!visitado[pointer.getUsuario().getNumero()]){
-                dfs(pointer,visitado);
-            }
-            pointer=pointer.getNext();
-        }
-    }
-    
-    public void dfsPila(NodoG nodo, boolean[] visitado, StackNodoG pila){
-        visitado[nodo.getUsuario().getNumero()]=true;
-        NodoG pointer=getNodos().getHead();
-        while (pointer!=null){
-            if (!visitado[pointer.getUsuario().getNumero()]){
-                dfsPila( pointer, visitado, pila);
-            }
-            pointer=pointer.getNext();
-        }
-        pila.push(nodo.getUsuario());
-        pila.getPeak().setAdyacentes(nodo.getAdyacentes());
-    } 
-    
-    public void Kosaraju(){
-        StackNodoG pila=new StackNodoG();
-        boolean [] visitado= new boolean[getNodos().getLength()];
-        
-        NodoG pointer=getNodos().getHead();
-        while(pointer!=null){
-            if(!visitado[pointer.getUsuario().getNumero()]){
-                dfsPila(pointer, visitado,pila);}
-            pointer=pointer.getNext();
-        }
-        Grafo traspuesto=grafoTraspuesto();
-        
-        boolean [] visitado2= new boolean[getNodos().getLength()];
-        while(!pila.isEmpty()){
-            NodoG nodo=pila.pop();
-            if (!visitado2[nodo.getUsuario().getNumero()]){
-                dfs(nodo, visitado2);    
-            }
-            System.out.println(" ");
-        }
-        
-             
-    }
-        
+     
 }
     
     
