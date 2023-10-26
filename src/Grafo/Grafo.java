@@ -225,19 +225,18 @@ public class Grafo {
     
     public static void grafo(String[] args) {
         Graph grafo = new SingleGraph("Grafo red social");
-        ListaG ListaGrafo  = new ListaG();
-        elemento NodoG = ListaGrafo.getHead();
-        for (NodoG elemento: NodoG){
-            System.out.println(elemento);
-        }
         // Añade los nodos al GraphStream
-        for (NodoG nodo : getNodos()) {
+        NodoG nodo = nodos.getHead();
+        NodoG temp = null;
+        while (nodo !=null){
             Node node = grafo.addNode(nodo.getUsuario().getId());
             node.setAttribute("label", nodo.getUsuario().getId());
         }
-        ListaArista ListaArista =  new ListaArista();
+        
         // Añade las aristas al GraphStream
-        for (Arista arista : getAristas()) {
+        Arista arista = aristas.getHead();
+        Arista temp2 = null;
+        while (arista != null) {
             Edge edge = grafo.addEdge(arista.getInicio().getUsuario().getId(), arista.getInicio().getUsuario().getId(), arista.getObjetivo().getUsuario().getId());
             edge.setAttribute("label", arista.getInicio().getUsuario().getId() + " - " + arista.getObjetivo().getUsuario().getId());
         }
