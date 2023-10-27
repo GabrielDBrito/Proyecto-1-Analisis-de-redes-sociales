@@ -9,7 +9,7 @@ import EDD.ListaG;
 /**
  *
  * @author Gabriel
- * version 19/10/23
+ * version 27/10/23
  */
 public class NodoG {
     private Usuario usuario;
@@ -21,7 +21,6 @@ public class NodoG {
         this.usuario = usuario;
         this.next = null;
         this.adyacentes = new ListaG();
-        this.numeroComponente=null;
     }
 
     public Usuario getUsuario() {

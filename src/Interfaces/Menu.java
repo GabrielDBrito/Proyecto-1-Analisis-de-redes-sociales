@@ -30,6 +30,7 @@ import org.graphstream.ui.swing_viewer.ViewPanel;
 /**
  *
  * @author cesar
+ * version 21/10/23
  */
 public class Menu extends javax.swing.JFrame {
     static private Grafo grafo;
@@ -291,7 +292,7 @@ public class Menu extends javax.swing.JFrame {
         this.displayGraph(graphLibrary);
         }
         catch(Exception err){
-                JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo");
+                JOptionPane.showMessageDialog(null, err);
         }
     }//GEN-LAST:event_MostrarGrafoActionPerformed
 
