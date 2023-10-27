@@ -9,6 +9,7 @@ import EDD.NodoG;
 /**
  *
  * @author Gabriel
+ * version 26/10/23
  */
 public class Kosaraju {
     private int [] numeros;
@@ -31,6 +32,7 @@ public class Kosaraju {
         }
     }
     /*/
+    
     private void dfs (NodoG nodo, Grafo grafo){
         visitado[nodo.getUsuario().getNumero()]=true;
         numeros[nodo.getUsuario().getNumero()]=contador;

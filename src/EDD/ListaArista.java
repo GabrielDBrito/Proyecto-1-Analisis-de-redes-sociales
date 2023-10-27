@@ -122,6 +122,12 @@ public class ListaArista {
             return getHead()==null;    
     }
     
+    
+    /*
+    Este metodo recorre toda la lista y borra todas las aristas que contengan el nodo correspondiente al id ingresado por parametro
+    @param id1
+    @return 
+    */
     public Arista deleteById(String id1){
         if (isEmpty()){
             return null;     
