@@ -255,6 +255,5 @@ public class Grafo {
         traspuesto.setNodos(nodosTranspuestos);
         traspuesto.crearRelacionesTraspuesta();
         return traspuesto;
-    }
-   
+    } 
 }
