@@ -34,13 +34,13 @@ import org.graphstream.ui.swing_viewer.ViewPanel;
 public class Menu extends javax.swing.JFrame {
     static private Grafo grafo;
     public static ModificarGrafo v0;
-    private File archivo;
+    static private File archivo;
     
     
     /**
      * Creates new form Menu
      */
-    public Menu(Grafo grafo) {
+    public Menu(Grafo grafo, File archivo) {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         initComponents();
@@ -48,6 +48,11 @@ public class Menu extends javax.swing.JFrame {
         this.grafo=null;
         }else{
             this.grafo=grafo;
+        }
+        if (archivo==null){
+        this.archivo=null;
+        }else{
+            this.archivo=archivo;
         }
     }
 
@@ -215,7 +220,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
         if (getGrafo().getNodos().getLength()!=0){
-        ModificarGrafo v3 = new ModificarGrafo(this,getGrafo());
+        ModificarGrafo v3 = new ModificarGrafo(this,getGrafo(),archivo);
         }else{
             JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo");
         }
@@ -325,7 +330,7 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu(grafo).setVisible(true);
+                new Menu(grafo,archivo).setVisible(true);
             }
         });
     }

@@ -4,7 +4,7 @@
  */
 package Interfaces;
 import Grafo.Grafo;
-
+import java.io.File;
 /**
  *
  * @author cesar
@@ -13,16 +13,18 @@ public class ModificarGrafo extends javax.swing.JFrame {
     
     public static Menu v1;
     static private Grafo grafo;
+    static private File archivo;
     /**
      * Creates new form ModificarGrafo
      */
-    public ModificarGrafo(Menu v1,Grafo grafo) {
+    public ModificarGrafo(Menu v1,Grafo grafo,File archivo) {
         initComponents();
         this.v1=v1;
         v1.setVisible(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.grafo=grafo;
+        this.archivo=archivo;
     }
 
     public Grafo getGrafo() {
@@ -117,15 +119,15 @@ public class ModificarGrafo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
-        Agregar v4 = new Agregar(this, getGrafo());
+        Agregar v4 = new Agregar(this, grafo, archivo);
     }//GEN-LAST:event_AgregarActionPerformed
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
-        Eliminar v5 = new Eliminar(this, getGrafo());
+        Eliminar v5 = new Eliminar(this, grafo, archivo);
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuActionPerformed
-        Menu menu = new Menu(grafo);
+        Menu menu = new Menu(grafo, archivo);
         this.setVisible(false);
         menu.setVisible(true);
     }//GEN-LAST:event_MenuActionPerformed
@@ -160,7 +162,7 @@ public class ModificarGrafo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarGrafo(v1, grafo).setVisible(true);
+                new ModificarGrafo(v1, grafo, archivo).setVisible(true);
             }
         });
     }

@@ -6,6 +6,7 @@ package Interfaces;
 
 import javax.swing.JOptionPane;
 import Grafo.Grafo;
+import java.io.File;
 /**
  *
  * @author cesar
@@ -13,17 +14,19 @@ import Grafo.Grafo;
 public class Eliminar extends javax.swing.JFrame {
     public static ModificarGrafo v3;
     static private Grafo grafo;
+    static private File archivo;
 
     /**
      * Creates new form Eliminar
      */
-    public Eliminar(ModificarGrafo v3, Grafo grafo) {
+    public Eliminar(ModificarGrafo v3, Grafo grafo, File archivo) {
         initComponents();
         this.v3=v3;
         v3.setVisible(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.grafo=grafo;
+        this.archivo=archivo;
     }
 
     public static Grafo getGrafo() {
@@ -128,7 +131,7 @@ public class Eliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
-        Menu menu = new Menu(grafo);
+        Menu menu = new Menu(grafo,archivo);
         this.setVisible(false);
         menu.setVisible(true);
     }//GEN-LAST:event_menuActionPerformed
@@ -176,7 +179,7 @@ public class Eliminar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Eliminar(v3,grafo).setVisible(true);
+                new Eliminar(v3,grafo,archivo).setVisible(true);
             }
         });
     }
