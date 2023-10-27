@@ -12,7 +12,7 @@ import Grafo.Grafo;
 public class ModificarGrafo extends javax.swing.JFrame {
     
     public static Menu v1;
-    private Grafo grafo;
+    static private Grafo grafo;
     /**
      * Creates new form ModificarGrafo
      */
@@ -121,11 +121,11 @@ public class ModificarGrafo extends javax.swing.JFrame {
     }//GEN-LAST:event_AgregarActionPerformed
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
-        Eliminar v5 = new Eliminar(this);
+        Eliminar v5 = new Eliminar(this, getGrafo());
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void MenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuActionPerformed
-        Menu menu = new Menu();
+        Menu menu = new Menu(grafo);
         this.setVisible(false);
         menu.setVisible(true);
     }//GEN-LAST:event_MenuActionPerformed
@@ -160,7 +160,7 @@ public class ModificarGrafo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarGrafo(v1, null).setVisible(true);
+                new ModificarGrafo(v1, grafo).setVisible(true);
             }
         });
     }

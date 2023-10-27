@@ -5,25 +5,35 @@
 package Interfaces;
 
 import javax.swing.JOptionPane;
-
+import Grafo.Grafo;
 /**
  *
  * @author cesar
  */
 public class Eliminar extends javax.swing.JFrame {
     public static ModificarGrafo v3;
+    static private Grafo grafo;
 
     /**
      * Creates new form Eliminar
      */
-    public Eliminar(ModificarGrafo v3) {
+    public Eliminar(ModificarGrafo v3, Grafo grafo) {
         initComponents();
         this.v3=v3;
         v3.setVisible(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        this.grafo=grafo;
     }
 
+    public static Grafo getGrafo() {
+        return grafo;
+    }
+
+    public static void setGrafo(Grafo grafo) {
+        Eliminar.grafo = grafo;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -118,7 +128,7 @@ public class Eliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
-        Menu menu = new Menu();
+        Menu menu = new Menu(grafo);
         this.setVisible(false);
         menu.setVisible(true);
     }//GEN-LAST:event_menuActionPerformed
@@ -129,8 +139,11 @@ public class Eliminar extends javax.swing.JFrame {
 
     private void EliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarUsuarioActionPerformed
         String nombre_usuario = NombreUsuario.getText();
-        JOptionPane.showMessageDialog(null,"Usuario eliminado con exito");
-        //System.out.println("Nombre es " + nombre_usuario);
+        try{
+        getGrafo().borrarPorId(nombre_usuario);
+        }catch(Exception err){
+                JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo");
+        }
     }//GEN-LAST:event_EliminarUsuarioActionPerformed
 
     /**
@@ -163,7 +176,7 @@ public class Eliminar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Eliminar(v3).setVisible(true);
+                new Eliminar(v3,grafo).setVisible(true);
             }
         });
     }

@@ -5,7 +5,7 @@
 package Programa;
 import java.io.IOException;
 import Interfaces.Menu;
-
+import Grafo.Grafo;
 
 /**
  * @author luis
@@ -13,8 +13,8 @@ import Interfaces.Menu;
  */
 public class Main {
     public static void main(String[] args) throws IOException{
-
-        Menu ventana = new Menu();
+        Grafo grafo= new Grafo();
+        Menu ventana = new Menu(grafo);
         ventana.setVisible(true);
         
         

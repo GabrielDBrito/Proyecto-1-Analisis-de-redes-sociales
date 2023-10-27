@@ -16,7 +16,7 @@ import org.graphstream.graph.Node;
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.SingleGraph;
-
+import javax.swing.JOptionPane;
 
 /**
  * @author Gabriel
@@ -25,7 +25,6 @@ import org.graphstream.graph.implementations.SingleGraph;
 public class Grafo {
     private static ListaG nodos;
     private static ListaArista aristas;
-    // lo de estatic es una prueba 
 
     public Grafo() {
         ListaG lista=new ListaG();
@@ -110,7 +109,6 @@ public class Grafo {
     */
     public NodoG searchById(String id){
         if (nodos.isEmpty()){
-            System.out.println("La lista esta vacia");
             return null;
         }else{
             NodoG pointer=nodos.getHead();
@@ -132,13 +130,12 @@ public class Grafo {
         }     
     }
     
-    /*borrar nodo por id
+    /*borrar nodo por nombre de usuario
     *@param id
     *@return
     */
-    public NodoG deleteById(String id){
+    public NodoG borrarPorId(String id){
         if (nodos.isEmpty()){
-            System.out.println("La lista ya esta vacia");
             return null;     
         }else{
             NodoG pointer=nodos.getHead();
@@ -173,9 +170,11 @@ public class Grafo {
                 for (int i=0; i<getAristas().getLength();i++){  
                     getAristas().deleteById(id);
                 }
+                JOptionPane.showMessageDialog(null,"Usuario borrado con exito");
                 return temp;
                 } 
                 else{
+                JOptionPane.showMessageDialog(null,"El usuario a borrar no ha sido encontrado");
                 return null;
             }
         }     
@@ -215,6 +214,7 @@ public class Grafo {
                 nodo.getAdyacentes().insertFinal(nodo2.getUsuario());
                 pointer1=pointer1.getNext();
             }
+            JOptionPane.showMessageDialog(null,"Usuario agregado con exito");
             return usuario;
         }
     }
@@ -223,7 +223,7 @@ public class Grafo {
     Crea las relaciones del grafo a partir de las aristas
     Este metodo se utiliza para generar las relaciones del grafo transpuesto
     */  
-    public void crearRelacionesTranspuesta(){
+    public void crearRelacionesTraspuesta(){
         Arista pointer = getAristas().getHead();
         ListaArista lista2=new ListaArista();
         while (pointer!=null){
@@ -253,7 +253,7 @@ public class Grafo {
             pointer=pointer.getNext();
         }
         traspuesto.setNodos(nodosTranspuestos);
-        traspuesto.crearRelacionesTranspuesta();
+        traspuesto.crearRelacionesTraspuesta();
         return traspuesto;
     }
    

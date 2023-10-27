@@ -87,6 +87,7 @@ public class AdministradorTxt {
     
     */
     public void escrituraTxt(Grafo grafo, File archivo){
+        grafo.printNodos();
         String textoTxt=""; //string que va a sobreescribir el archivo
         Lista ListaTexto=new Lista();
         ListaTexto.insertFinal("usuarios");

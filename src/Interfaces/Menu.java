@@ -32,7 +32,7 @@ import org.graphstream.ui.swing_viewer.ViewPanel;
  * @author cesar
  */
 public class Menu extends javax.swing.JFrame {
-    private Grafo grafo;
+    static private Grafo grafo;
     public static ModificarGrafo v0;
     private File archivo;
     
@@ -40,10 +40,15 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form Menu
      */
-    public Menu() {
+    public Menu(Grafo grafo) {
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         initComponents();
+        if (grafo==null){
+        this.grafo=null;
+        }else{
+            this.grafo=grafo;
+        }
     }
 
     public Grafo getGrafo() {
@@ -209,7 +214,11 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_CargaArchivoActionPerformed
 
     private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
+        if (getGrafo().getNodos().getLength()!=0){
         ModificarGrafo v3 = new ModificarGrafo(this,getGrafo());
+        }else{
+            JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo");
+        }
     }//GEN-LAST:event_ModificarGrafoActionPerformed
 
     private void ActualizarRepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarRepoActionPerformed
@@ -316,7 +325,7 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                new Menu(grafo).setVisible(true);
             }
         });
     }

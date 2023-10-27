@@ -6,14 +6,14 @@ package Interfaces;
 
 import javax.swing.JOptionPane;
 import Grafo.Grafo;
-
+import EDD.Lista;
 /**
  *
  * @author cesar
  */
 public class Agregar extends javax.swing.JFrame {
     public static ModificarGrafo v3;
-    private Grafo grafo;
+    static private Grafo grafo;
 
     /**
      * Creates new form Agregar
@@ -26,6 +26,15 @@ public class Agregar extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.grafo=grafo;
     }
+
+    public static Grafo getGrafo() {
+        return grafo;
+    }
+
+    public static void setGrafo(Grafo grafo) {
+        Agregar.grafo = grafo;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,6 +52,7 @@ public class Agregar extends javax.swing.JFrame {
         AgregarUsuario = new javax.swing.JButton();
         Menui = new javax.swing.JButton();
         RelacionesUsuario = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,7 +71,7 @@ public class Agregar extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel2.setText("Ingrese las conexiones correspondientes:");
+        jLabel2.setText("Ingrese los usuarios con los que se relaciona de la sigueinte manera: ");
 
         AgregarUsuario.setBackground(new java.awt.Color(255, 153, 102));
         AgregarUsuario.setText("AGREGAR");
@@ -85,44 +95,44 @@ public class Agregar extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel3.setText("Ejemplo: @juan, @pedro  (notese que estan separados por una coma y un espacio (\", \")");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(RelacionesUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(339, 339, 339)
                 .addComponent(AgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Menui, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(135, 135, 135))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RelacionesUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jLabel1)
-                .addGap(11, 11, 11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel2)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
                 .addComponent(RelacionesUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AgregarUsuario)
                     .addComponent(Menui))
@@ -144,9 +154,19 @@ public class Agregar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarUsuarioActionPerformed
+    
         String nombre_usuario = NombreUsuario.getText();
         String relaciones = RelacionesUsuario.getText();
-        JOptionPane.showMessageDialog(null,"Usuario agreado con exito");
+        String[]relaciones2=relaciones.split(", ");
+        Lista lista=new Lista();
+        for(int i=0; i<relaciones2.length;i++){
+        lista.insertFinal(relaciones2[i]);
+        }
+        try{
+        getGrafo().nuevoUsuario(nombre_usuario,lista);
+        }catch(Exception err){
+                JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo");
+        }
     }//GEN-LAST:event_AgregarUsuarioActionPerformed
 
     private void NombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreUsuarioActionPerformed
@@ -154,7 +174,7 @@ public class Agregar extends javax.swing.JFrame {
     }//GEN-LAST:event_NombreUsuarioActionPerformed
 
     private void MenuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuiActionPerformed
-        Menu menu = new Menu();
+        Menu menu = new Menu(grafo);
         this.setVisible(false);
         menu.setVisible(true);
     }//GEN-LAST:event_MenuiActionPerformed
@@ -193,7 +213,7 @@ public class Agregar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Agregar(v3,null).setVisible(true);
+                new Agregar(v3,grafo).setVisible(true);
             }
         });
     }
@@ -205,6 +225,7 @@ public class Agregar extends javax.swing.JFrame {
     private javax.swing.JTextField RelacionesUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

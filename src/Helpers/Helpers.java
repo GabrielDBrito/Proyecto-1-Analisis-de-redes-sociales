@@ -122,7 +122,7 @@ public class Helpers {
         if (nodo!= null){
             return true;
         }else{
-            JOptionPane.showMessageDialog(null, "El usuario "+id+" no existe");
+            JOptionPane.showMessageDialog(null, "El usuario '' "+id+" '' no existe");
             return false;
         }
     }
