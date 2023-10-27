@@ -4,22 +4,27 @@
  */
 package Interfaces;
 
+import javax.swing.JOptionPane;
+import Grafo.Grafo;
+
 /**
  *
  * @author cesar
  */
 public class Agregar extends javax.swing.JFrame {
     public static ModificarGrafo v3;
+    private Grafo grafo;
 
     /**
      * Creates new form Agregar
      */
-    public Agregar(ModificarGrafo v3) {
+    public Agregar(ModificarGrafo v3, Grafo grafo) {
         initComponents();
         this.v3=v3;
         v3.setVisible(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        this.grafo=grafo;
     }
 
     /**
@@ -35,10 +40,9 @@ public class Agregar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         NombreUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         AgregarUsuario = new javax.swing.JButton();
         Menui = new javax.swing.JButton();
+        RelacionesUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,11 +63,6 @@ public class Agregar extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setText("Ingrese las conexiones correspondientes:");
 
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 204));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
         AgregarUsuario.setBackground(new java.awt.Color(255, 153, 102));
         AgregarUsuario.setText("AGREGAR");
         AgregarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -79,14 +78,17 @@ public class Agregar extends javax.swing.JFrame {
             }
         });
 
+        RelacionesUsuario.setBackground(new java.awt.Color(255, 255, 204));
+        RelacionesUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RelacionesUsuarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Menui, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -99,12 +101,15 @@ public class Agregar extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(352, 352, 352)
-                        .addComponent(AgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 142, Short.MAX_VALUE))
+                        .addGap(73, 73, 73)
+                        .addComponent(RelacionesUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(339, 339, 339)
+                .addComponent(AgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Menui, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(135, 135, 135))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,13 +120,13 @@ public class Agregar extends javax.swing.JFrame {
                 .addComponent(NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(AgregarUsuario)
-                .addGap(15, 15, 15)
-                .addComponent(Menui)
-                .addContainerGap())
+                .addGap(30, 30, 30)
+                .addComponent(RelacionesUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AgregarUsuario)
+                    .addComponent(Menui))
+                .addGap(241, 241, 241))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -139,11 +144,13 @@ public class Agregar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarUsuarioActionPerformed
-        // TODO add your handling code here:
+        String nombre_usuario = NombreUsuario.getText();
+        String relaciones = RelacionesUsuario.getText();
+        JOptionPane.showMessageDialog(null,"Usuario agreado con exito");
     }//GEN-LAST:event_AgregarUsuarioActionPerformed
 
     private void NombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreUsuarioActionPerformed
-        // TODO add your handling code here:
+            
     }//GEN-LAST:event_NombreUsuarioActionPerformed
 
     private void MenuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuiActionPerformed
@@ -151,6 +158,10 @@ public class Agregar extends javax.swing.JFrame {
         this.setVisible(false);
         menu.setVisible(true);
     }//GEN-LAST:event_MenuiActionPerformed
+
+    private void RelacionesUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelacionesUsuarioActionPerformed
+        
+    }//GEN-LAST:event_RelacionesUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,7 +193,7 @@ public class Agregar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Agregar(v3).setVisible(true);
+                new Agregar(v3,null).setVisible(true);
             }
         });
     }
@@ -191,10 +202,9 @@ public class Agregar extends javax.swing.JFrame {
     private javax.swing.JButton AgregarUsuario;
     private javax.swing.JButton Menui;
     private javax.swing.JTextField NombreUsuario;
+    private javax.swing.JTextField RelacionesUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

@@ -209,7 +209,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_CargaArchivoActionPerformed
 
     private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
-        ModificarGrafo v3 = new ModificarGrafo(this);
+        ModificarGrafo v3 = new ModificarGrafo(this,getGrafo());
     }//GEN-LAST:event_ModificarGrafoActionPerformed
 
     private void ActualizarRepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarRepoActionPerformed

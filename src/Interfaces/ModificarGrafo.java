@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaces;
+import Grafo.Grafo;
 
 /**
  *
@@ -11,16 +12,25 @@ package Interfaces;
 public class ModificarGrafo extends javax.swing.JFrame {
     
     public static Menu v1;
-
+    private Grafo grafo;
     /**
      * Creates new form ModificarGrafo
      */
-    public ModificarGrafo(Menu v1) {
+    public ModificarGrafo(Menu v1,Grafo grafo) {
         initComponents();
         this.v1=v1;
         v1.setVisible(false);
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+        this.grafo=grafo;
+    }
+
+    public Grafo getGrafo() {
+        return grafo;
+    }
+
+    public void setGrafo(Grafo grafo) {
+        this.grafo = grafo;
     }
 
     /**
@@ -107,7 +117,7 @@ public class ModificarGrafo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
-        Agregar v4 = new Agregar(this);
+        Agregar v4 = new Agregar(this, getGrafo());
     }//GEN-LAST:event_AgregarActionPerformed
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
@@ -150,7 +160,7 @@ public class ModificarGrafo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarGrafo(v1).setVisible(true);
+                new ModificarGrafo(v1, null).setVisible(true);
             }
         });
     }
