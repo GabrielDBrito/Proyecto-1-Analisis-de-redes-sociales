@@ -183,12 +183,11 @@ public class Menu extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void CargaArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargaArchivoActionPerformed
         AdministradorTxt admintxt=new AdministradorTxt();
         Helpers helper=new Helpers();
         Grafo grafo=new Grafo();
-        //this.grafo=grafo;
         Lista usuarios =new Lista();
         Lista relaciones=new Lista();
         try {
@@ -199,7 +198,6 @@ public class Menu extends javax.swing.JFrame {
         grafo.crearUsuarios(usuarios);
         grafo.crearRelaciones(relaciones);
         setGrafo(grafo);
-        getGrafo().printNodos();
     }//GEN-LAST:event_CargaArchivoActionPerformed
 
     private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
@@ -244,9 +242,7 @@ public class Menu extends javax.swing.JFrame {
         
         Graph graphLibrary = new MultiGraph("LGC Social");
         System.setProperty("org.graphstream.ui", "swing");
-        NodoG auxNodo =getGrafo().getNodos().getHead();
-        auxNodo.print();;
-          
+        NodoG auxNodo =getGrafo().getNodos().getHead();      
         
         graphLibrary.setAttribute("ui.stylesheet", "node{\n" +
                 "    size: 30px, 30px;\n" +

@@ -222,7 +222,6 @@ public class Grafo {
     /*
     Crea las relaciones del grafo a partir de las aristas
     Este metodo se utiliza para generar las relaciones del grafo transpuesto
-  
     */  
     public void crearRelacionesTranspuesta(){
         Arista pointer = getAristas().getHead();
@@ -243,9 +242,7 @@ public class Grafo {
     /*
     Crea el grafo traspuesto (grafo con la direccion de las aristas invertidas)
     @return
-    
     */
-    
     public Grafo grafoTraspuesto(){
         Grafo traspuesto=new Grafo();
         ListaG nodosTranspuestos=new ListaG();

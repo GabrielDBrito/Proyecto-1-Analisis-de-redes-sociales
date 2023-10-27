@@ -7,6 +7,7 @@ package EDD;
 /**
  *
  * @author Gabriel
+ * version 08/10/23
  */
 public interface ILista {
     

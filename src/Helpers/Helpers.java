@@ -11,7 +11,7 @@ import EDD.NodoG;
 /**
  *
  * @author Gabriel
- * version 18/10/2023
+ * version 26/10/2023
  */
 public class Helpers {
 
@@ -23,7 +23,6 @@ public class Helpers {
     
     @param string
     @return lista
-    
     */
    public Lista stringSplit(String string){
         String[] partes = string.split(", ");
@@ -67,7 +66,6 @@ public class Helpers {
      * @param id
      * @return
      */
-    
     public String arroba(String id) {
 
         String b = "@";
@@ -158,9 +156,9 @@ public class Helpers {
        
     /*
      busca el menor numero disponible(que no este utilizado par algun otro usuario)
+     
      @param grafo
      @return
-     
      */
     public Integer buscarNumero(Grafo grafo){
         int contador =0;
@@ -174,12 +172,9 @@ public class Helpers {
             } else{
                 contador++;
             }
-            
         }
         return null;
     }
-    
-    
 }
     
    
