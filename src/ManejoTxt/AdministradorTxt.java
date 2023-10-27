@@ -78,6 +78,7 @@ public class AdministradorTxt {
                 br.close();
                 return archivo;
             }
+            JOptionPane.showMessageDialog(null, "El archivo seleccionado no es compatible");
             return null;
     }
     
