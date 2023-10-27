@@ -35,10 +35,9 @@ public class Agregar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         NombreUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         AgregarUsuario = new javax.swing.JButton();
         Menui = new javax.swing.JButton();
+        RelacionesUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,11 +58,6 @@ public class Agregar extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setText("Ingrese las conexiones correspondientes:");
 
-        jTextArea1.setBackground(new java.awt.Color(255, 255, 204));
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
         AgregarUsuario.setBackground(new java.awt.Color(255, 153, 102));
         AgregarUsuario.setText("AGREGAR");
         AgregarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +70,13 @@ public class Agregar extends javax.swing.JFrame {
         Menui.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MenuiActionPerformed(evt);
+            }
+        });
+
+        RelacionesUsuario.setBackground(new java.awt.Color(255, 255, 204));
+        RelacionesUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RelacionesUsuarioActionPerformed(evt);
             }
         });
 
@@ -99,12 +100,12 @@ public class Agregar extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(352, 352, 352)
-                        .addComponent(AgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 142, Short.MAX_VALUE))
+                        .addComponent(AgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(RelacionesUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(200, 277, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,9 +116,9 @@ public class Agregar extends javax.swing.JFrame {
                 .addComponent(NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
+                .addComponent(RelacionesUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(252, 252, 252)
                 .addComponent(AgregarUsuario)
                 .addGap(15, 15, 15)
                 .addComponent(Menui)
@@ -143,7 +144,8 @@ public class Agregar extends javax.swing.JFrame {
     }//GEN-LAST:event_AgregarUsuarioActionPerformed
 
     private void NombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreUsuarioActionPerformed
-        // TODO add your handling code here:
+        String nombre_usuario = NombreUsuario.getText();
+        
     }//GEN-LAST:event_NombreUsuarioActionPerformed
 
     private void MenuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuiActionPerformed
@@ -151,6 +153,10 @@ public class Agregar extends javax.swing.JFrame {
         this.setVisible(false);
         menu.setVisible(true);
     }//GEN-LAST:event_MenuiActionPerformed
+
+    private void RelacionesUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RelacionesUsuarioActionPerformed
+        String relaciones = RelacionesUsuario.getText();
+    }//GEN-LAST:event_RelacionesUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,10 +197,9 @@ public class Agregar extends javax.swing.JFrame {
     private javax.swing.JButton AgregarUsuario;
     private javax.swing.JButton Menui;
     private javax.swing.JTextField NombreUsuario;
+    private javax.swing.JTextField RelacionesUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

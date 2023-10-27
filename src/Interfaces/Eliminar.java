@@ -33,7 +33,7 @@ public class Eliminar extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        NombreUsuario = new javax.swing.JTextField();
         EliminarUsuario = new javax.swing.JButton();
         menu = new javax.swing.JButton();
 
@@ -44,8 +44,13 @@ public class Eliminar extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Ingrese el usuario a Eliminar:");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 204));
-        jTextField1.setText("Ingrese el nombre");
+        NombreUsuario.setBackground(new java.awt.Color(255, 255, 204));
+        NombreUsuario.setText("Ingrese el nombre");
+        NombreUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NombreUsuarioActionPerformed(evt);
+            }
+        });
 
         EliminarUsuario.setBackground(new java.awt.Color(255, 153, 102));
         EliminarUsuario.setText("Eliminar");
@@ -68,7 +73,7 @@ public class Eliminar extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(80, 80, 80)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(360, 360, 360)
                         .addComponent(EliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -84,7 +89,7 @@ public class Eliminar extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(EliminarUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
@@ -111,6 +116,10 @@ public class Eliminar extends javax.swing.JFrame {
         this.setVisible(false);
         menu.setVisible(true);
     }//GEN-LAST:event_menuActionPerformed
+
+    private void NombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreUsuarioActionPerformed
+        String nombre_usuario = NombreUsuario.getText();
+    }//GEN-LAST:event_NombreUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,9 +158,9 @@ public class Eliminar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EliminarUsuario;
+    private javax.swing.JTextField NombreUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton menu;
     // End of variables declaration//GEN-END:variables
 }
