@@ -4,6 +4,8 @@
  */
 package Interfaces;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author cesar
@@ -45,7 +47,6 @@ public class Eliminar extends javax.swing.JFrame {
         jLabel1.setText("Ingrese el usuario a Eliminar:");
 
         NombreUsuario.setBackground(new java.awt.Color(255, 255, 204));
-        NombreUsuario.setText("Ingrese el nombre");
         NombreUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NombreUsuarioActionPerformed(evt);
@@ -54,6 +55,11 @@ public class Eliminar extends javax.swing.JFrame {
 
         EliminarUsuario.setBackground(new java.awt.Color(255, 153, 102));
         EliminarUsuario.setText("Eliminar");
+        EliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarUsuarioActionPerformed(evt);
+            }
+        });
 
         menu.setText("MENU");
         menu.addActionListener(new java.awt.event.ActionListener() {
@@ -118,8 +124,14 @@ public class Eliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_menuActionPerformed
 
     private void NombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreUsuarioActionPerformed
-        String nombre_usuario = NombreUsuario.getText();
+        
     }//GEN-LAST:event_NombreUsuarioActionPerformed
+
+    private void EliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarUsuarioActionPerformed
+        String nombre_usuario = NombreUsuario.getText();
+        JOptionPane.showMessageDialog(null,"Usuario eliminado con exito");
+        //System.out.println("Nombre es " + nombre_usuario);
+    }//GEN-LAST:event_EliminarUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
