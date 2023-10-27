@@ -7,6 +7,7 @@ import Grafo.Usuario;
 /**
  *
  * @author Gabriel
+ * version 26/10/23
  */
 public class StackNodoG {
     private NodoG peak;

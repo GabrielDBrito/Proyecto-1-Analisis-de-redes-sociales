@@ -25,6 +25,7 @@ public class AdministradorTxt {
     
     /*
     Este metodo le permite al usuario seleccionar un archivo txt, posteoriormente lee el archivo y carga la informacion en el grafo
+    
     @param usuarios, relaciones
     @ return
     */
@@ -80,13 +81,17 @@ public class AdministradorTxt {
             return null;
     }
     
+    /*
+    Este metodo sobrescribe el archivo seleccionado en el metodo de lectura, escribiendo los cambios realizados en el grafo respecto a los usarios y las relaciones
+    
+    */
     public void escrituraTxt(Grafo grafo, File archivo){
-        String textoTxt="";
+        String textoTxt=""; //string que va a sobreescribir el archivo
         Lista ListaTexto=new Lista();
         ListaTexto.insertFinal("usuarios");
         NodoG pointer =grafo.getNodos().getHead();
         while(pointer!=null){
-            ListaTexto.insertFinal(pointer.getUsuario().getId());
+            ListaTexto.insertFinal(pointer.getUsuario().getId()); //se insertan todos los nombres de usuario en la lista
             pointer=pointer.getNext();
         }
         ListaTexto.insertFinal("relaciones");
@@ -95,25 +100,25 @@ public class AdministradorTxt {
             String texto1=pointer1.getInicio().getUsuario().getId();
             String texto2=pointer1.getObjetivo().getUsuario().getId();
             String textoArista=texto1+", "+texto2;
-            ListaTexto.insertFinal(textoArista);
+            ListaTexto.insertFinal(textoArista); //se insertan todos las relaciones en la lista
             pointer1=pointer1.getNext();
         }
         Nodo nodo=ListaTexto.getHead();
         for(int i=0; i<ListaTexto.getLength();i++){
-            textoTxt+=nodo.getElement().toString()+"\n";
+            textoTxt+=nodo.getElement().toString()+"\n"; //se agrega cada elemento de la lista al string con saltos de linea entre elementos
             nodo=nodo.getNext();       
             }
         
         try{
-            PrintWriter pw = new PrintWriter(archivo);
-            pw.print(textoTxt);
+            PrintWriter pw = new PrintWriter(archivo); 
+            pw.print(textoTxt); //se sobreescribe el archivo
             pw.close();
             JOptionPane.showMessageDialog(null, "Repositorio Actualizado");
         }
         catch(Exception err){
             JOptionPane.showMessageDialog(null, err);
         }
-        }
     }
+}
 
 

@@ -34,6 +34,7 @@ import org.graphstream.ui.swing_viewer.ViewPanel;
 public class Menu extends javax.swing.JFrame {
     private Grafo grafo;
     public static ModificarGrafo v0;
+    private File archivo;
     
     
     /**
@@ -52,8 +53,14 @@ public class Menu extends javax.swing.JFrame {
     public void setGrafo(Grafo grafo) {
         this.grafo = grafo;
     }
-    
-    
+
+    public File getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(File archivo) {
+        this.archivo = archivo;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -183,23 +190,22 @@ public class Menu extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     private void CargaArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargaArchivoActionPerformed
         AdministradorTxt admintxt=new AdministradorTxt();
         Helpers helper=new Helpers();
         Grafo grafo=new Grafo();
-        //this.grafo=grafo;
         Lista usuarios =new Lista();
         Lista relaciones=new Lista();
         try {
-            admintxt.lecturaTxt(usuarios, relaciones);
+            File archivo=admintxt.lecturaTxt(usuarios, relaciones);
+            setArchivo(archivo);
         } catch (IOException ex) {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
         grafo.crearUsuarios(usuarios);
         grafo.crearRelaciones(relaciones);
         setGrafo(grafo);
-        getGrafo().printNodos();
     }//GEN-LAST:event_CargaArchivoActionPerformed
 
     private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
@@ -208,9 +214,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void ActualizarRepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarRepoActionPerformed
         AdministradorTxt admintxt=new AdministradorTxt();
-        Grafo grafo = new Grafo();  // Reemplaza obtenerGrafo() con tu lógica para obtener un objeto Grafo
-        File archivo = new File("archivo.txt");  // Reemplaza con el archivo deseado
-        admintxt.escrituraTxt(grafo, archivo);
+        admintxt.escrituraTxt(getGrafo(), getArchivo());
     }//GEN-LAST:event_ActualizarRepoActionPerformed
     
     
@@ -244,9 +248,7 @@ public class Menu extends javax.swing.JFrame {
         
         Graph graphLibrary = new MultiGraph("LGC Social");
         System.setProperty("org.graphstream.ui", "swing");
-        NodoG auxNodo =getGrafo().getNodos().getHead();
-        auxNodo.print();;
-          
+        NodoG auxNodo =getGrafo().getNodos().getHead();      
         
         graphLibrary.setAttribute("ui.stylesheet", "node{\n" +
                 "    size: 30px, 30px;\n" +

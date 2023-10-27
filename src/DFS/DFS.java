@@ -11,6 +11,7 @@ import EDD.NodoG;
 /**
  *
  * @author Gabriel
+ * version 26/10/23
  */
 public class DFS {
     private StackNodoG stack;
@@ -28,7 +29,7 @@ public class DFS {
         this.stack = stack;
     }  
     
-    public void dfs (Grafo grafo, NodoG nodo, boolean[] visitado){
+   /* public void dfs (Grafo grafo, NodoG nodo, boolean[] visitado){
         visitado[nodo.getUsuario().getNumero()]=true;
         NodoG pointer=grafo.getNodos().getHead();
         while (pointer!=null){
@@ -40,7 +41,7 @@ public class DFS {
         getStack().getPeak().setAdyacentes(nodo.getAdyacentes());
     }
     
-    
+    /*/
     
       /*public DFS(Grafo grafo){
         StackNodoG stack=new StackNodoG();

@@ -202,13 +202,4 @@ public class ListaG {
             }
         }     
     }
-//    public void addNode(Usuario usuario){
-//        insertFinal(usuario);
-//    }
-//    public void addEdge(Usuario usuarioA, Usuario usuarioB) {
-//    // Crea una nueva arista entre los nodos usuarioA y usuarioB
-//    Edge arista = new Edge(usuarioA, usuarioB);
-//
-//    // Añade la arista al grafo
-//    graph.addEdge(arista);
 }
