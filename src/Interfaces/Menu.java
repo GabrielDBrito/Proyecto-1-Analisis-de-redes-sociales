@@ -33,6 +33,7 @@ import org.graphstream.ui.swing_viewer.ViewPanel;
  */
 public class Menu extends javax.swing.JFrame {
     private Grafo grafo;
+    public static ModificarGrafo v0;
     
     
     /**
