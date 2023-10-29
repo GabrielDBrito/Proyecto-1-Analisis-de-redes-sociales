@@ -5,7 +5,6 @@
 package Interfaces;
 
 import EDD.Lista;
-import EDD.Nodo;
 import EDD.NodoG;
 import Grafo.Arista;
 import Grafo.Grafo;
@@ -13,7 +12,6 @@ import Helpers.Helpers;
 import ManejoTxt.AdministradorTxt;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;

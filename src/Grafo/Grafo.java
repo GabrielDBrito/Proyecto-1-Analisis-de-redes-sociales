@@ -9,13 +9,7 @@ import EDD.Lista;
 import EDD.ListaArista;
 import EDD.Nodo;
 import EDD.NodoG;
-import EDD.StackNodoG;
-import Grafo.Usuario;
 import Helpers.Helpers;
-import org.graphstream.graph.Node;
-import org.graphstream.graph.Edge;
-import org.graphstream.graph.Graph;
-import org.graphstream.graph.implementations.SingleGraph;
 import javax.swing.JOptionPane;
 
 /**

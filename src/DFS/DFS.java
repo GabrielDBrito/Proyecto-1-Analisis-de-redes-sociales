@@ -5,7 +5,6 @@
 package DFS;
 import Grafo.Grafo;
 import EDD.StackNodoG;
-import EDD.ListaG;
 import EDD.NodoG;
 
 /**
@@ -15,11 +14,22 @@ import EDD.NodoG;
  */
 public class DFS {
     private StackNodoG stack;
-
-    public DFS(){
+    
+    /*
+    Metodo constructor de la clase DFS, ademas comienza a emplear el algoritmo de busqueda en profundidad (dfs) en los nodos del 
+    */
+    public DFS(Grafo grafo,boolean[] visitado){
         StackNodoG stack=new StackNodoG();
         this.stack=stack;
+        NodoG pointer=grafo.getNodos().getHead();
+        while (pointer!=null){ //se recorre la lista de nodos del grafo y si no ha sido visitado, se le aplica el metodo dfs
+            if (!visitado[pointer.getUsuario().getNumero()]){
+                dfs(grafo, pointer,visitado); 
+            }
+            pointer=pointer.getNext();
+        }
     }
+    
     
     public StackNodoG getStack() {
         return stack;
@@ -28,73 +38,19 @@ public class DFS {
     public void setStack(StackNodoG stack) {
         this.stack = stack;
     }  
-    
-   /* public void dfs (Grafo grafo, NodoG nodo, boolean[] visitado){
-        visitado[nodo.getUsuario().getNumero()]=true;
-        NodoG pointer=grafo.getNodos().getHead();
-        while (pointer!=null){
-            if (!pointer.isVisitado()){
+   
+   /*
+    Metodo encargado marcar un nodo como visitado y de emplear el algoritmo de busqueda en profundidad (dfs) en los nodos adyacentes al mismo
+    */
+   public void dfs (Grafo grafo, NodoG nodo, boolean[] visitado){
+        visitado[nodo.getUsuario().getNumero()]=true; //se marca el nodo como visitado
+        NodoG pointer=nodo.getAdyacentes().getHead();
+        while (pointer!=null){  ////se recorre la lista de nodos adyacentes, si algun nodo no ha sido visitado, se le aplica el metodo dfs
+            if (!pointer.isVisitado()){  
                 dfs(grafo, pointer, visitado);
             }
         }
-        stack.push(nodo.getUsuario());
-        getStack().getPeak().setAdyacentes(nodo.getAdyacentes());
+        stack.push(nodo.getUsuario()); //se agrega el nodo a una pila
+        getStack().getPeak().setAdyacentes(nodo.getAdyacentes()); //se establecen los adyacentes del nodo
     }
-    
-    /*/
-    
-      /*public DFS(Grafo grafo){
-        StackNodoG stack=new StackNodoG();
-        this.stack=stack;
-        NodoG pointer=grafo.getNodos().getHead();
-        while (pointer!=null){
-            if (!pointer.isVisitado()){
-                dfs(pointer);
-            }
-            pointer=pointer.getNext();
-        }
-    }
-*/
-    
-    
-    
-    /*public void dfs(NodoG nodo){
-        nodo.setVisitado(true);
-        NodoG pointer1=nodo.getAdyacentes().getHead();
-        while (pointer1!=null){
-            if (!pointer1.isVisitado()){
-                dfs(pointer1);
-            }
-            pointer1=pointer1.getNext();
-        }
-        getStack().push(nodo.getUsuario());
-        getStack().getPeak().setAdyacentes(nodo.getAdyacentes());
-    }
-    /*/
-    
-    /*public void dfs(ListaG lista, boolean[] visitado){
-        NodoG nodo = lista.getHead();
-        while (nodo!= null){
-            if (!nodo.isVisitado()){
-            nodo.setVisitado(false);
-            dfsRecursivo(nodo);
-            }
-            else{
-                nodo.getNext();
-            }
-        }
-    }
-    
-    public void dfsRecursivo(NodoG nodo){
-        ListaG adj=nodo.getAdyacentes();
-        NodoG nodo1=adj.getHead();
-        while (nodo1!= null){
-            if (!nodo1.isVisitado()){
-                nodo1.setVisitado(true);
-                dfsRecursivo(nodo1);
-            }
-        }
-    }
-    
-    */
 }

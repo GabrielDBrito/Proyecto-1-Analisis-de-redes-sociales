@@ -16,6 +16,7 @@ public class NodoG {
     private NodoG next;
     private ListaG adyacentes;
     private Integer numeroComponente;
+    private boolean visitado;
 
     public NodoG(Usuario usuario) {
         this.usuario = usuario;
@@ -54,8 +55,14 @@ public class NodoG {
     public void setNumeroComponente(Integer numeroComponente) {
         this.numeroComponente = numeroComponente;
     }
-    
-    
+
+    public boolean isVisitado() {
+        return visitado;
+    }
+
+    public void setVisitado(boolean visitado) {
+        this.visitado = visitado;
+    }
     
     //imprime los atributos del nodo
     public void print(){
