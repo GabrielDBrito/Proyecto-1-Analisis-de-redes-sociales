@@ -190,14 +190,17 @@ public class Grafo {
         String ID=helpers.verificarId(id, this);
         Integer NUMERO=helpers.buscarNumero(this);
         boolean ADYACENTES=true;
-        Nodo pointer=adyacentes.getHead();
-        while (pointer!=null){
-            boolean verificar=helpers.usuarioValido(pointer.getElement().toString(), this);
-            if (verificar==false){
-                ADYACENTES=false;
-            }
+        
+        if (adyacentes.getLength()!=0){
+            Nodo pointer=adyacentes.getHead();
+            while (pointer!=null){
+                boolean verificar=helpers.usuarioValido(pointer.getElement().toString(), this);
+                if (verificar==false){
+                    ADYACENTES=false;
+                }
             pointer=pointer.getNext();
-        }
+            }
+        }  
         
         if (ID==null || NUMERO==null || ADYACENTES==false){
             return null;
@@ -206,13 +209,16 @@ public class Grafo {
             Usuario usuario=new Usuario(ID,NUMERO);
             getNodos().insertFinal(usuario);
             NodoG nodo =searchById(ID);
-            Nodo pointer1=adyacentes.getHead();
-            while (pointer1!=null){
-                NodoG nodo2 =searchById(pointer1.getElement().toString());
-                Arista arista=new Arista(nodo, nodo2);
-                getAristas().insertFinal(arista);
-                nodo.getAdyacentes().insertFinal(nodo2.getUsuario());
-                pointer1=pointer1.getNext();
+            
+            if (adyacentes.getLength()!=0){
+                Nodo pointer1=adyacentes.getHead();
+                while (pointer1!=null){
+                    NodoG nodo2 =searchById(pointer1.getElement().toString());
+                    Arista arista=new Arista(nodo, nodo2);
+                    getAristas().insertFinal(arista);
+                    nodo.getAdyacentes().insertFinal(nodo2.getUsuario());
+                    pointer1=pointer1.getNext();
+                }
             }
             JOptionPane.showMessageDialog(null,"Usuario agregado con exito");
             return usuario;

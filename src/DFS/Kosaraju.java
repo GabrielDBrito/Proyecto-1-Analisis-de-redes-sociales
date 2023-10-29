@@ -16,7 +16,7 @@ public class Kosaraju {
     private int contador;
     private boolean [] visitado;
     
-    /*public Kosaraju(Grafo grafo){
+   /* public Kosaraju(Grafo grafo){
         DFS dfs =new DFS(grafo.grafoTraspuesto());
         this.numeros=new int [grafo.getNodos().getLength()];
         this.visitado=new boolean [grafo.getNodos().getLength()];

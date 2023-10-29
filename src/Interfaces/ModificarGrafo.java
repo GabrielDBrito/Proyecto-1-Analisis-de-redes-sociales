@@ -118,10 +118,16 @@ public class ModificarGrafo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /*
+    Este metodo se encarga de mostrar la interfaz de agregar usuario
+    */
     private void AgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarActionPerformed
         Agregar v4 = new Agregar(this, grafo, archivo);
     }//GEN-LAST:event_AgregarActionPerformed
-
+    
+    /*
+    Este metodo se encarga de mostrar la interfaz de eliminar usuario
+    */
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
         Eliminar v5 = new Eliminar(this, grafo, archivo);
     }//GEN-LAST:event_EliminarActionPerformed
