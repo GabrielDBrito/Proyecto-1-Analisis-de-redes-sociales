@@ -1,6 +1,5 @@
 package EDD;
 import Grafo.Usuario;
-import EDD.ListaG;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -16,7 +15,6 @@ public class NodoG {
     private NodoG next;
     private ListaG adyacentes;
     private Integer numeroComponente;
-    private boolean visitado;
 
     public NodoG(Usuario usuario) {
         this.usuario = usuario;
@@ -54,14 +52,6 @@ public class NodoG {
 
     public void setNumeroComponente(Integer numeroComponente) {
         this.numeroComponente = numeroComponente;
-    }
-
-    public boolean isVisitado() {
-        return visitado;
-    }
-
-    public void setVisitado(boolean visitado) {
-        this.visitado = visitado;
     }
     
     //imprime los atributos del nodo
