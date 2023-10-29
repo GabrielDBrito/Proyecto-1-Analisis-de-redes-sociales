@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/EDD/NodoG.java</file>
             <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Programa/Main.java</file>
             <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Programa/App.java</file>
@@ -15,6 +16,16 @@
             <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/DFS/DFS.java</file>
             <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Interfaces/Eliminar.java</file>
             <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Grafo/Grafo.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/cesar/Desktop/Proyecto%20EDD/Proyecto-1-Analisis-de-redes-sociales/src/Programa/Main.java</file>
+            <file>file:/C:/Users/cesar/Desktop/Proyecto%20EDD/Proyecto-1-Analisis-de-redes-sociales/src/Programa/App.java</file>
+            <file>file:/C:/Users/cesar/Desktop/Proyecto%20EDD/Proyecto-1-Analisis-de-redes-sociales/src/Interfaces/Agregar.java</file>
+=======
+            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Programa/Main.java</file>
+            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Programa/App.java</file>
+>>>>>>> 1ffe771ce374cbabdc02d357c7de3812d66f6ba5
+>>>>>>> 68af7216beb545d7bacbe26a0570b9036cc579c5
         </group>
     </open-files>
 </project-private>

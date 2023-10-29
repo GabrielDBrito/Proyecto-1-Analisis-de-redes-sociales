@@ -41,8 +41,8 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu(Grafo grafo, File archivo) {
         this.setVisible(true);
-        this.setLocationRelativeTo(null);
         initComponents();
+        this.setLocationRelativeTo(null);
         if (grafo==null){
         this.grafo=null;
         }else{

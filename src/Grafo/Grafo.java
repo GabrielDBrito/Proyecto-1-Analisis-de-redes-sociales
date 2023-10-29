@@ -168,7 +168,7 @@ public class Grafo {
                 return temp;
                 } 
                 else{
-                JOptionPane.showMessageDialog(null,"El usuario a borrar no ha sido encontrado");
+                JOptionPane.showMessageDialog(null,"El usuario a borrar no ha sido encontrado\nAsegurese de cumplir con el formato (@xxxxx)");
                 return null;
             }
         }     

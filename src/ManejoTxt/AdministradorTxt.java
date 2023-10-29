@@ -117,7 +117,7 @@ public class AdministradorTxt {
             JOptionPane.showMessageDialog(null, "Repositorio Actualizado");
         }
         catch(Exception err){
-            JOptionPane.showMessageDialog(null, err);
+            JOptionPane.showMessageDialog(null, "Error, no ha sido cargado ningun archivo");
         }
     }
 }
