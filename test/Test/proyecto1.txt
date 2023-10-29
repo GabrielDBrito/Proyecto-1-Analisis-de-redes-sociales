@@ -23,6 +23,7 @@ relaciones
 @sancho23, @terciopelo
 @terciopelo, @newageforever
 @terciopelo, @caribedoble
+@terciopelo, @juanc
 @caribedoble, @africa
 @africa, @cipriano
 @cipriano, @totalfree
