@@ -3,35 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/EDD/NodoG.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Programa/Main.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Programa/App.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/EDD/ListaG.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/ManejoTxt/AdministradorTxt.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/EDD/StackNodoG.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Grafo/Arista.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/DFS/Kosaraju.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/EDD/Nodo.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Interfaces/Agregar.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/EDD/ListaArista.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Interfaces/ModificarGrafo.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/EDD/ILista.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Interfaces/Eliminar.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Grafo/Grafo.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Grafo/Usuario.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Helpers/Helpers.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/EDD/Lista.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/Interfaces/Menu.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/src/DFS/DFS.java</file>
-            <file>file:/C:/Users/Gabriel/Documents/NetBeansProjects/Proyecto1/test/Test/proyecto1.txt</file>
-=======
-            <file>file:/C:/Users/cesar/Desktop/Proyecto%20EDD/Proyecto-1-Analisis-de-redes-sociales/src/Interfaces/ModificarGrafo.java</file>
-            <file>file:/C:/Users/cesar/Desktop/Proyecto%20EDD/Proyecto-1-Analisis-de-redes-sociales/src/Interfaces/Eliminar.java</file>
             <file>file:/C:/Users/cesar/Desktop/Proyecto%20EDD/Proyecto-1-Analisis-de-redes-sociales/src/Programa/Main.java</file>
-            <file>file:/C:/Users/cesar/Desktop/Proyecto%20EDD/Proyecto-1-Analisis-de-redes-sociales/src/Interfaces/Menu.java</file>
+            <file>file:/C:/Users/cesar/Desktop/Proyecto%20EDD/Proyecto-1-Analisis-de-redes-sociales/src/Programa/App.java</file>
             <file>file:/C:/Users/cesar/Desktop/Proyecto%20EDD/Proyecto-1-Analisis-de-redes-sociales/src/Interfaces/Agregar.java</file>
->>>>>>> a7ee7f30cc9d66819bafb184ae9e82d1240ac095
         </group>
     </open-files>
 </project-private>
