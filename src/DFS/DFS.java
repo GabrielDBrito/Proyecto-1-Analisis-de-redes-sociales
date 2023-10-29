@@ -46,7 +46,7 @@ public class DFS {
         visitado[nodo.getUsuario().getNumero()]=true; //se marca el nodo como visitado
         NodoG pointer=nodo.getAdyacentes().getHead();
         while (pointer!=null){  ////se recorre la lista de nodos adyacentes, si algun nodo no ha sido visitado, se le aplica el metodo dfs
-            if (!pointer.isVisitado()){  
+            if (!visitado[pointer.getUsuario().getNumero()]){  
                 dfs(grafo, pointer, visitado);
             }
         }
