@@ -202,6 +202,10 @@ public class Menu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
     
+    /*
+    Este metodo se encarga de cargar el archivo txt
+    
+    */
     private void CargaArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CargaArchivoActionPerformed
         AdministradorTxt admintxt=new AdministradorTxt();
         Helpers helper=new Helpers();
@@ -218,7 +222,11 @@ public class Menu extends javax.swing.JFrame {
         grafo.crearRelaciones(relaciones);
         setGrafo(grafo);
     }//GEN-LAST:event_CargaArchivoActionPerformed
-
+    
+    /*
+    Este metodo se encarga de mostrar la interfaz de mostrar grafo
+    
+    */
     private void ModificarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarGrafoActionPerformed
         if (getGrafo().getNodos().getLength()!=0){
         ModificarGrafo v3 = new ModificarGrafo(this,getGrafo(),archivo);
@@ -227,13 +235,19 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ModificarGrafoActionPerformed
 
+    /*
+    Este metodo se encarga de actualizar el repositorio (sobreescribir txt con los cambios)
+    
+    */
     private void ActualizarRepoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarRepoActionPerformed
         AdministradorTxt admintxt=new AdministradorTxt();
         admintxt.escrituraTxt(getGrafo(), getArchivo());
     }//GEN-LAST:event_ActualizarRepoActionPerformed
     
+    /*
+    Este metodo se encarga de mostrar el grafo
     
-    
+    */
     private void displayGraph(Graph graph2) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -256,46 +270,54 @@ public class Menu extends javax.swing.JFrame {
         frame.setVisible(true);      
     }
     
+    /*
+    Este metodo se encarga de crear el grafo con la libreria graphstream para luego ser mostrado
     
+    */
     private void MostrarGrafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarGrafoActionPerformed
-        
-        try{
-        
-        Graph graphLibrary = new MultiGraph("LGC Social");
-        System.setProperty("org.graphstream.ui", "swing");
-        NodoG auxNodo =getGrafo().getNodos().getHead();      
-        
-        graphLibrary.setAttribute("ui.stylesheet", "node{\n" +
-                "    size: 30px, 30px;\n" +
-                "    fill-color: orange;\n" +
-                "    text-mode: normal; \n" +
-                "}");
-        //Recorre los nodos y los agrega al grafo
-        while(auxNodo!=null){
-            String numero=Integer.toString(auxNodo.getUsuario().getNumero());
-            graphLibrary.addNode(numero);
-            graphLibrary.getNode(numero).setAttribute("ui.label", numero);
-            graphLibrary.getNode(numero).setAttribute("ui.frozen");
-            auxNodo=auxNodo.getNext();
-        }   
-              
-        
-        //Recorre las aristas y las agrega al grafo
-        Arista arista=getGrafo().getAristas().getHead();
-        while(arista!=null){
-            String n1=Integer.toString(arista.getInicio().getUsuario().getNumero());
-            String n2=Integer.toString(arista.getObjetivo().getUsuario().getNumero());
-            String id=n1+n2;
-            graphLibrary.addEdge(id,n1,n2, true);
-            arista=arista.getNext();
+        if (grafo.getNodos().getLength()==0){
+            JOptionPane.showMessageDialog(null, "No se ha cargado ningun archivo");
         }
-        this.displayGraph(graphLibrary);
-        }
-        catch(Exception err){
-                JOptionPane.showMessageDialog(null, err);
-        }
-    }//GEN-LAST:event_MostrarGrafoActionPerformed
+        else{
+        
+            try{
 
+            Graph graphLibrary = new MultiGraph("LGC Social");
+            System.setProperty("org.graphstream.ui", "swing");
+            NodoG auxNodo =getGrafo().getNodos().getHead();      
+
+            graphLibrary.setAttribute("ui.stylesheet", "node{\n" +
+                    "    size: 30px, 30px;\n" +
+                    "    fill-color: orange;\n" +
+                    "    text-mode: normal; \n" +
+                    "}");
+            //Recorre los nodos y los agrega al grafo
+            while(auxNodo!=null){
+                String numero=Integer.toString(auxNodo.getUsuario().getNumero());
+                String id=auxNodo.getUsuario().getId();
+
+                graphLibrary.addNode(numero);
+                graphLibrary.getNode(numero).setAttribute("ui.label", id);
+                graphLibrary.getNode(numero).setAttribute("ui.frozen");
+                auxNodo=auxNodo.getNext();
+            }                
+
+            //Recorre las aristas y las agrega al grafo
+            Arista arista=getGrafo().getAristas().getHead();
+            while(arista!=null){
+                String n1=Integer.toString(arista.getInicio().getUsuario().getNumero());
+                String n2=Integer.toString(arista.getObjetivo().getUsuario().getNumero());
+                String id=n1+n2;
+                graphLibrary.addEdge(id,n1,n2, true);
+                arista=arista.getNext();
+            }
+            this.displayGraph(graphLibrary);
+            }
+            catch(Exception err){
+                    JOptionPane.showMessageDialog(null, err);
+            }
+    }//GEN-LAST:event_MostrarGrafoActionPerformed
+    }   
     
     
     

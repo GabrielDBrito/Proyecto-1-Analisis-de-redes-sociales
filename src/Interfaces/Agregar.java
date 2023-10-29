@@ -168,15 +168,22 @@ public class Agregar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /*
+    Este metodo se encarga de agregar un nuevo usuario al grafo
+    */
     private void AgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarUsuarioActionPerformed
     
         String nombre_usuario = NombreUsuario.getText();
         String relaciones = RelacionesUsuario.getText();
         String[]relaciones2=relaciones.split(", ");
         Lista lista=new Lista();
-        for(int i=0; i<relaciones2.length;i++){
-        lista.insertFinal(relaciones2[i]);
+        if (relaciones.equalsIgnoreCase("")){
+            
+        }else{
+            for(int i=0; i<relaciones2.length;i++){
+            lista.insertFinal(relaciones2[i]);
+            }
         }
         try{
         getGrafo().nuevoUsuario(nombre_usuario,lista);

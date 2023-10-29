@@ -57,7 +57,7 @@ public class Eliminar extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 204, 153));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Ingrese el usuario a Eliminar:");
+        jLabel1.setText("Ingrese el usuario a Eliminar:     (Formato @XXXXXX)");
 
         NombreUsuario.setBackground(new java.awt.Color(255, 255, 204));
         NombreUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -88,14 +88,14 @@ public class Eliminar extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(360, 360, 360)
-                        .addComponent(EliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(EliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -139,7 +139,10 @@ public class Eliminar extends javax.swing.JFrame {
     private void NombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreUsuarioActionPerformed
         
     }//GEN-LAST:event_NombreUsuarioActionPerformed
-
+    
+    /*
+    Este metodo se encarga de borrar un usuario del grafo
+    */
     private void EliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarUsuarioActionPerformed
         String nombre_usuario = NombreUsuario.getText();
         try{
